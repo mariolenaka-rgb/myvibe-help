@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyVibe — Ayuda y Presentación</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0A0A0F; color: #FFF; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+    header { background: #12121A; padding: 20px 24px; border-bottom: 1px solid #1E1E2E; display: flex; align-items: center; gap: 12px; }
+    header h1 { font-size: 26px; font-weight: 800; letter-spacing: 1px; }
+    header h1 span { color: #A78BFA; }
+    header p { color: #888; font-size: 13px; margin-top: 2px; }
+    .hero { background: linear-gradient(135deg, #1A0A2E, #0A0A0F); padding: 48px 24px; text-align: center; border-bottom: 1px solid #1E1E2E; }
+    .hero h2 { font-size: 28px; font-weight: 800; margin-bottom: 12px; }
+    .hero h2 span { color: #A78BFA; }
+    .hero p { color: #AAA; font-size: 15px; line-height: 1.6; max-width: 480px; margin: 0 auto 24px; }
+    .badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .badge { background: #1E1E2E; border: 1px solid #3D3D6B; border-radius: 20px; padding: 8px 16px; font-size: 13px; color: #A78BFA; font-weight: 600; }
+    section { padding: 40px 24px; max-width: 640px; margin: 0 auto; }
+    section h3 { color: #A78BFA; font-size: 18px; font-weight: 700; margin-bottom: 20px; padding-bottom: 8px; border-bottom: 1px solid #1E1E2E; }
+    .item { display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start; }
+    .item .icon { width: 40px; height: 40px; border-radius: 50%; background: #1A0A2E; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; border: 1px solid #3D3D6B; }
+    .item .texto h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+    .item .texto p { font-size: 13px; color: #AAA; line-height: 1.6; }
+    .opinion { background: #12121A; border: 1px solid #1E1E2E; border-radius: 16px; padding: 28px; margin-top: 12px; }
+    .opinion h3 { color: #A78BFA; font-size: 18px; font-weight: 700; margin-bottom: 6px; border: none; padding: 0; }
+    .opinion p { color: #888; font-size: 13px; margin-bottom: 20px; }
+    .opinion input, .opinion textarea, .opinion select {
+      width: 100%; background: #0A0A0F; border: 1px solid #3D3D6B; border-radius: 10px;
+      color: #FFF; padding: 12px; font-size: 14px; margin-bottom: 12px; font-family: inherit;
+    }
+    .opinion textarea { height: 100px; resize: vertical; }
+    .opinion button {
+      width: 100%; background: #A78BFA; color: #000; border: none; border-radius: 12px;
+      padding: 14px; font-size: 15px; font-weight: 800; cursor: pointer; letter-spacing: 0.5px;
+    }
+    .opinion button:hover { background: #7C3AED; color: #FFF; }
+    .ok { display: none; text-align: center; padding: 20px; color: #00FF66; font-weight: 700; font-size: 16px; }
+    footer { text-align: center; padding: 32px 24px; color: #444; font-size: 12px; border-top: 1px solid #1E1E2E; margin-top: 40px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>My<span>Vibe</span></h1>
+    <p>Tu momento. Tu música.</p>
+  </div>
+</header>
+
+<div class="hero">
+  <h2>Comparte lo que <span>estás escuchando</span></h2>
+  <p>MyVibe es la app para compartir tu canción del día, conectar con gente cerca que escucha lo mismo y retarte a duelos musicales.</p>
+  <div class="badges">
+    <span class="badge">🎵 Vibe diario</span>
+    <span class="badge">📡 Radar musical</span>
+    <span class="badge">⚔️ Duelos</span>
+    <span class="badge">🛡️ Tribus</span>
+    <span class="badge">🔥 Trending</span>
+  </div>
+</div>
+
+<section>
+  <h3>🎵 ¿Cómo funciona?</h3>
+  <div class="item"><div class="icon">🚀</div><div class="texto"><h4>Lanza tu Vibe</h4><p>Publica la canción que estás escuchando ahora mismo. Solo una vez por franja del día.</p></div></div>
+  <div class="item"><div class="icon">👥</div><div class="texto"><h4>Ve el feed</h4><p>Una vez publicado, descubre qué están escuchando tus amigos y toda la comunidad hoy.</p></div></div>
+  <div class="item"><div class="icon">📡</div><div class="texto"><h4>Radar</h4><p>Encuentra usuarios cercanos con gustos musicales parecidos. Si hay match alto, el radar pulsa en rojo.</p></div></div>
+  <div class="item"><div class="icon">⚔️</div><div class="texto"><h4>Duelos de Vibe</h4><p>Reta a alguien con tu canción. La comunidad vota. Gana el mejor tema.</p></div></div>
+  <div class="item"><div class="icon">🛡️</div><div class="texto"><h4>Tribus</h4><p>Crea o únete a grupos musicales. Comparte canciones y comenta con tu gente.</p></div></div>
+  <div class="item"><div class="icon">🔥</div><div class="texto"><h4>Trending</h4><p>Descubre qué canciones están petando en tu zona y en toda la app ahora mismo.</p></div></div>
+</section>
+
+<section>
+  <div class="opinion">
+    <h3>💬 Cuéntanos qué piensas</h3>
+    <p>Tu opinión ayuda a mejorar MyVibe. Solo tarda 1 minuto.</p>
+    <input type="text" id="nick" placeholder="Tu nick en MyVibe (opcional)" />
+    <select id="valoracion">
+      <option value="">⭐ ¿Qué te parece la app?</option>
+      <option value="5">⭐⭐⭐⭐⭐ Muy buena</option>
+      <option value="4">⭐⭐⭐⭐ Buena</option>
+      <option value="3">⭐⭐⭐ Normal</option>
+      <option value="2">⭐⭐ Mejorable</option>
+      <option value="1">⭐ Mala</option>
+    </select>
+    <textarea id="opinion" placeholder="¿Qué mejorarías? ¿Qué te gusta más? ¿Algo que no funciona?"></textarea>
+    <button onclick="enviar()">Enviar opinión 🚀</button>
+    <div class="ok" id="ok">✅ ¡Gracias! Tu opinión ha sido enviada.</div>
+  </div>
+</section>
+
+<footer>
+  MyVibe © 2026 · <a href="#" style="color:#A78BFA">Términos de uso</a> · <a href="#" style="color:#A78BFA">Privacidad</a>
+</footer>
+
+<script>
+  const SUPABASE_URL = 'https://lurgjmlvgdiuztpaszkp.supabase.co';
+  const SUPABASE_KEY = 'TU_ANON_KEY_AQUI';
+
+  async function enviar() {
+    const nick = document.getElementById('nick').value.trim();
+    const valoracion = document.getElementById('valoracion').value;
+    const opinion = document.getElementById('opinion').value.trim();
+    if (!opinion && !valoracion) { alert('Escribe algo antes de enviar'); return; }
+    await fetch(`${SUPABASE_URL}/rest/v1/opiniones_web`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`
+      },
+      body: JSON.stringify({ nick: nick || 'Anónimo', valoracion: parseInt(valoracion) || null, texto: opinion || null })
+    });
+    document.getElementById('ok').style.display = 'block';
+    document.getElementById('nick').value = '';
+    document.getElementById('valoracion').value = '';
+    document.getElementById('opinion').value = '';
+  }
+</script>
+
+</body>
+</html>
