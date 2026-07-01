@@ -16,11 +16,11 @@
     .hero h2 span { color: #A78BFA; }
     .hero p { color: #AAA; font-size: 15px; line-height: 1.6; max-width: 480px; margin: 0 auto 24px; }
     .badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .badge { background: #1E1E2E; border: 1px solid #3D3D6B; border-radius: 20px; padding: 8px 16px; font-size: 13px; color: #A78BFA; font-weight: 600; }
+    .badge { background: #1E1E2E; border: 1px solid #3D3D6B; border-radius: 20px; padding: 8px 16px; font-size: 13px; color: #A78BFA; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
     section { padding: 40px 24px; max-width: 640px; margin: 0 auto; }
-    section h3 { color: #A78BFA; font-size: 18px; font-weight: 700; margin-bottom: 20px; padding-bottom: 8px; border-bottom: 1px solid #1E1E2E; }
+    section h3 { color: #A78BFA; font-size: 18px; font-weight: 700; margin-bottom: 20px; padding-bottom: 8px; border-bottom: 1px solid #1E1E2E; display: flex; align-items: center; gap: 8px; }
     .item { display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start; }
-    .item .icon { width: 40px; height: 40px; border-radius: 50%; background: #1A0A2E; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; border: 1px solid #3D3D6B; }
+    .item .icon { width: 40px; height: 40px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
     .item .texto h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
     .item .texto p { font-size: 13px; color: #AAA; line-height: 1.6; }
     .pantalla { background: #12121A; border: 1px solid #1E1E2E; border-radius: 14px; padding: 20px; margin-bottom: 16px; }
@@ -59,11 +59,20 @@
   <h2>Comparte lo que <span>estás escuchando</span></h2>
   <p>MyVibe es la app para compartir tu canción del día, conectar con gente cerca que escucha lo mismo y retarte a duelos musicales.</p>
   <div class="badges">
-    <span class="badge">🎵 Vibe diario</span>
-    <span class="badge">📡 Radar musical</span>
-    <span class="badge">⚔️ Duelos</span>
-    <span class="badge" style="display:inline-flex;align-items:center;gap:6px;">
-      <svg width="16" height="12" viewBox="0 0 58 44" xmlns="http://www.w3.org/2000/svg">
+    <span class="badge">
+      <svg width="16" height="16" viewBox="0 0 24 24"><path d="M19 16v6a2.6 2.6 0 102-2.5V12l4-1v6.3" stroke="#A78BFA" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 16v17l14-8.5z" fill="#A78BFA" transform="scale(0.55) translate(0,-2)"/></svg>
+      Vibe diario
+    </span>
+    <span class="badge">
+      <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 8a4 4 0 100 8 4 4 0 000-8zM12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="#A78BFA" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      Radar musical
+    </span>
+    <span class="badge">
+      <svg width="16" height="16" viewBox="0 0 24 24"><path d="M14.5 17.5L3 6V3h3l11.5 11.5M13 19l6-6M16 16l4 4M19 21l2-2" stroke="#A78BFA" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Duelos
+    </span>
+    <span class="badge">
+      <svg width="16" height="12" viewBox="0 0 58 44">
         <g transform="translate(10,0) scale(0.85)"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" stroke="#A78BFA" stroke-width="2.4" fill="none" stroke-linecap="round"/></g>
         <g transform="translate(29,0) scale(0.85)"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" stroke="#A78BFA" stroke-width="2.4" fill="none" stroke-linecap="round"/></g>
         <g transform="translate(0,21) scale(0.85)"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" stroke="#A78BFA" stroke-width="2.4" fill="none" stroke-linecap="round"/></g>
@@ -72,25 +81,34 @@
       </svg>
       Tribus
     </span>
-    <span class="badge">🔥 Trending</span>
+    <span class="badge">
+      <svg width="16" height="16" viewBox="0 0 24 24"><path d="M23 6l-9.5 9.5-5-5L1 18" stroke="#A78BFA" stroke-width="2.3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Trending
+    </span>
   </div>
 </div>
 
 <section>
-  <h3>🎵 ¿Qué es MyVibe?</h3>
-  <div class="item"><div class="icon">🌐</div><div class="texto"><h4>Una app para TODAS las plataformas</h4><p>Tú usas Spotify, tu colega Apple Music, otro YouTube. En MyVibe da igual. Compartes la canción y cada uno la abre en su plataforma con un toque. Sin capturas, sin pegar, sin salir de la app.</p></div></div>
-  <div class="item"><div class="icon">🔴</div><div class="texto"><h4>La pantalla se pone roja y el móvil vibra ⭐</h4><p>Cuando alguien cerca tiene un gusto muy parecido al tuyo, su tarjeta se ilumina en rojo, palpita y el móvil vibra. Un flechazo musical. Tocas su tarjeta y te dice exactamente qué artistas tenéis en común.</p></div></div>
-  <div class="item"><div class="icon">🚀</div><div class="texto"><h4>Trending que premia lo que ARRANCA</h4><p>El ranking no va de lo más escuchado de siempre. Va de lo que está explotando ahora. Una canción desconocida que de repente la pone mucha gente sube como un cohete.</p></div></div>
-  <div class="item"><div class="icon">⚔️</div><div class="texto"><h4>Duelos de Vibe</h4><p>Retas a un amigo: tu canción contra la suya. La gente vota. Gana la mejor. Sumas puntos, subes de rango y desbloqueas insignias.</p></div></div>
-  <div class="item"><div class="icon">📍</div><div class="texto"><h4>Eco-Cápsulas — próximamente</h4><p>Deja una canción enterrada en un lugar físico real. Solo la encuentra quien pase exactamente por ese sitio. Un tesoro sonoro escondido en tu ciudad.</p></div></div>
+  <h3>
+    <svg width="20" height="20" viewBox="0 0 24 24"><path d="M19 16v6a2.6 2.6 0 102-2.5V12l4-1v6.3" stroke="#A78BFA" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 16v17l14-8.5z" fill="#A78BFA" transform="scale(0.55) translate(0,-2)"/></svg>
+    ¿Qué es MyVibe?
+  </h3>
+  <div class="item"><div class="icon"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zM2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20" stroke="#A78BFA" stroke-width="1.6" fill="none"/></svg></div><div class="texto"><h4>Una app para TODAS las plataformas</h4><p>Tú usas Spotify, tu colega Apple Music, otro YouTube. En MyVibe da igual. Compartes la canción y cada uno la abre en su plataforma con un toque. Sin capturas, sin pegar, sin salir de la app.</p></div></div>
+  <div class="item"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z" stroke="#FF6B6B" stroke-width="1.8" fill="none"/><circle cx="12" cy="12" r="4" fill="#FF6B6B"/></svg></div><div class="texto"><h4>La pantalla se pone roja y el móvil vibra</h4><p>Cuando alguien cerca tiene un gusto muy parecido al tuyo, su tarjeta se ilumina en rojo, palpita y el móvil vibra. Un flechazo musical. Tocas su tarjeta y te dice exactamente qué artistas tenéis en común.</p></div></div>
+  <div class="item"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M23 6l-9.5 9.5-5-5L1 18M17 6h6v6" stroke="#A78BFA" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="texto"><h4>Trending que premia lo que ARRANCA</h4><p>El ranking no va de lo más escuchado de siempre. Va de lo que está explotando ahora. Una canción desconocida que de repente la pone mucha gente sube como un cohete.</p></div></div>
+  <div class="item"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M14.5 17.5L3 6V3h3l11.5 11.5M13 19l6-6M16 16l4 4M19 21l2-2M5 14l-4 4M2 21l3-3" stroke="#A78BFA" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="texto"><h4>Duelos de Vibe</h4><p>Retas a un amigo: tu canción contra la suya. La gente vota. Gana la mejor. Sumas puntos, subes de rango y desbloqueas insignias.</p></div></div>
+  <div class="item"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 22s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" stroke="#A78BFA" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="#A78BFA" stroke-width="1.6" fill="none"/></svg></div><div class="texto"><h4>Eco-Cápsulas — próximamente</h4><p>Deja una canción enterrada en un lugar físico real. Solo la encuentra quien pase exactamente por ese sitio. Un tesoro sonoro escondido en tu ciudad.</p></div></div>
 </section>
 
 <section>
-  <h3>❓ Ayuda por pantalla</h3>
+  <h3>
+    <svg width="20" height="20" viewBox="0 0 24 24"><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01M12 22a10 10 0 100-20 10 10 0 000 20z" stroke="#A78BFA" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Ayuda por pantalla
+  </h3>
 
   <div class="pantalla">
     <div class="pantalla-header" onclick="toggle(this)">
-      <span style="font-size:22px">🎵</span>
+      <svg width="22" height="22" viewBox="0 0 24 24"><path d="M19 16v6a2.6 2.6 0 102-2.5V12l4-1v6.3" stroke="#A78BFA" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 16v17l14-8.5z" fill="#A78BFA" transform="scale(0.55) translate(0,-2)"/></svg>
       <h4>Pantalla Inicio</h4>
       <span class="arrow">▼</span>
     </div>
@@ -99,7 +117,7 @@
       <ul>
         <li>Publica la canción que estás escuchando ahora — solo una por franja del día.</li>
         <li>El feed está bloqueado hasta que publicas. Primero tú, luego ves los demás.</li>
-        <li>Reacciona a los vibes de tus amigos: 🔥 Temazo · ✨ Descubrimiento · 😬 Meh · 💀 No es lo mío · 🔖 Guardar.</li>
+        <li>Reacciona a los vibes de tus amigos: Temazo · Descubrimiento · Meh · No es lo mío · Guardar.</li>
         <li>Usa el buscador para encontrar tu canción en Spotify o iTunes.</li>
         <li>Escucha un preview de 30 segundos antes de publicar.</li>
         <li>Debajo del feed de hoy verás los vibes de ayer y anteayer colapsados.</li>
@@ -109,7 +127,7 @@
 
   <div class="pantalla">
     <div class="pantalla-header" onclick="toggle(this)">
-      <span style="font-size:22px">📡</span>
+      <svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 8a4 4 0 100 8 4 4 0 000-8zM12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="#A78BFA" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
       <h4>Pantalla Radar</h4>
       <span class="arrow">▼</span>
     </div>
@@ -119,9 +137,9 @@
         <li>Solo aparecen personas activas en los últimos 15 minutos.</li>
         <li>La app calcula en silencio cuánto coincide tu música con la de cada persona cercana.</li>
         <li>Si hay afinidad muy alta, la tarjeta se ilumina en rojo y el móvil vibra. Tócala para ver qué artistas tenéis en común.</li>
-        <li>Pulsa ➕ Amistad para enviarle una solicitud con mensaje.</li>
-        <li>Pulsa ⚔️ Duelo para retarle con una canción.</li>
-        <li>Pulsa 📡 para actualizar el radar manualmente.</li>
+        <li>Pulsa Amistad para enviarle una solicitud con mensaje.</li>
+        <li>Pulsa Duelo para retarle con una canción.</li>
+        <li>Pulsa el icono de radar para actualizar manualmente.</li>
       </ul>
     </div>
   </div>
@@ -152,7 +170,7 @@
 
   <div class="pantalla">
     <div class="pantalla-header" onclick="toggle(this)">
-      <span style="font-size:22px">🔥</span>
+      <svg width="22" height="22" viewBox="0 0 24 24"><path d="M23 6l-9.5 9.5-5-5L1 18M17 6h6v6" stroke="#A78BFA" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <h4>Pantalla Trending</h4>
       <span class="arrow">▼</span>
     </div>
@@ -160,8 +178,8 @@
       <p><strong>¿Qué encontrarás aquí?</strong> Las canciones que más están petando en MyVibe ahora mismo.</p>
       <ul>
         <li>Modo Global: canciones populares en toda la app.</li>
-        <li>Modo Local 📍: solo canciones populares cerca de ti.</li>
-        <li>🚀 Explosiva = subió muchísimo en poco tiempo. 📈 Subiendo = va por buen camino. 🌱 Nueva = acaba de entrar.</li>
+        <li>Modo Local: solo canciones populares cerca de ti.</li>
+        <li>Explosiva = subió muchísimo en poco tiempo. Subiendo = va por buen camino. Nueva = acaba de entrar.</li>
         <li>El Historial muestra cómo han evolucionado las canciones día a día.</li>
         <li>Publicando tu vibe cada día puedes empujar canciones en el ranking.</li>
       </ul>
@@ -170,7 +188,7 @@
 
   <div class="pantalla">
     <div class="pantalla-header" onclick="toggle(this)">
-      <span style="font-size:22px">👤</span>
+      <svg width="22" height="22" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" stroke="#A78BFA" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
       <h4>Pantalla ID (Perfil)</h4>
       <span class="arrow">▼</span>
     </div>
@@ -178,10 +196,10 @@
       <p><strong>¿Qué encontrarás aquí?</strong> Tu identidad en MyVibe, tus logros y tus canciones guardadas.</p>
       <ul>
         <li>Personaliza tu avatar: pelo, color, gafas, tono de piel y expresión.</li>
-        <li>Tus puntos suben publicando vibes (+5) y ganando duelos (+15). De 🌱 Novato a 👑 Leyenda.</li>
-        <li>En Guardados 🔖 tienes todas las canciones que marcaste desde el feed.</li>
+        <li>Tus puntos suben publicando vibes (+5) y ganando duelos (+15). De Novato a Leyenda.</li>
+        <li>En Guardados tienes todas las canciones que marcaste desde el feed.</li>
         <li>Comparte tu perfil con otros usuarios por código QR o por nick.</li>
-        <li>Elige tu plataforma musical favorita en Ajustes ⚙️ — todos los enlaces de canciones se abrirán en ella.</li>
+        <li>Elige tu plataforma musical favorita en Ajustes — todos los enlaces de canciones se abrirán en ella.</li>
         <li>Desde aquí también accedes a tus Tribus y a tus Duelos activos.</li>
       </ul>
     </div>
@@ -191,19 +209,19 @@
 
 <section>
   <div class="opinion">
-    <h3>💬 Cuéntanos qué piensas</h3>
+    <h3 style="border:none;padding:0;">Cuéntanos qué piensas</h3>
     <p>Tu opinión ayuda a mejorar MyVibe. Solo tarda 1 minuto.</p>
     <input type="text" id="nick" placeholder="Tu nick en MyVibe (opcional)" />
     <select id="valoracion">
-      <option value="">⭐ ¿Qué te parece la app?</option>
-      <option value="5">⭐⭐⭐⭐⭐ Muy buena</option>
-      <option value="4">⭐⭐⭐⭐ Buena</option>
-      <option value="3">⭐⭐⭐ Normal</option>
-      <option value="2">⭐⭐ Mejorable</option>
-      <option value="1">⭐ Mala</option>
+      <option value="">¿Qué te parece la app?</option>
+      <option value="5">★★★★★ Muy buena</option>
+      <option value="4">★★★★ Buena</option>
+      <option value="3">★★★ Normal</option>
+      <option value="2">★★ Mejorable</option>
+      <option value="1">★ Mala</option>
     </select>
     <textarea id="opinion" placeholder="¿Qué mejorarías? ¿Qué te gusta más? ¿Algo que no funciona?"></textarea>
-    <button onclick="enviar()">Enviar opinión 🚀</button>
+    <button onclick="enviar()">Enviar opinión</button>
     <div class="ok" id="ok">✅ ¡Gracias! Tu opinión ha sido enviada.</div>
   </div>
 </section>
