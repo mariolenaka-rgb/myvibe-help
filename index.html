@@ -32,6 +32,11 @@
     .pantalla-body p { color: #AAA; font-size: 13px; line-height: 1.7; margin-bottom: 10px; }
     .pantalla-body ul { padding-left: 16px; }
     .pantalla-body ul li { color: #AAA; font-size: 13px; line-height: 1.8; }
+    .resena { background: #12121A; border: 1px solid #1E1E2E; border-radius: 14px; padding: 20px; margin-bottom: 16px; }
+    .resena-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; gap: 12px; }
+    .resena-nick { font-size: 14px; font-weight: 700; color: #FFF; }
+    .resena-estrellas { color: #FFD700; font-size: 14px; letter-spacing: 2px; white-space: nowrap; }
+    .resena-texto { color: #AAA; font-size: 13px; line-height: 1.7; }
     .opinion { background: #12121A; border: 1px solid #1E1E2E; border-radius: 16px; padding: 28px; margin-top: 12px; }
     .opinion h3 { color: #A78BFA; font-size: 18px; font-weight: 700; margin-bottom: 6px; border: none; padding: 0; }
     .opinion p { color: #888; font-size: 13px; margin-bottom: 20px; }
@@ -205,6 +210,41 @@
     </div>
   </div>
 
+</section>
+
+<section>
+  <h3>
+    <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="#FFD700" stroke-width="1.6" fill="none" stroke-linejoin="round"/></svg>
+    Lo que dicen los usuarios
+  </h3>
+
+  <!--
+    RESEÑAS MANUALES — no conectadas a Supabase, edítalas a mano.
+    Para añadir una: copia un bloque <div class="resena">...</div> completo y cambia nick, estrellas y texto.
+    Para quitar una: borra su bloque <div class="resena">...</div> entero.
+    Estrellas: usa entre 1 y 5 símbolos ★ (y ☆ para las que faltan hasta 5, opcional).
+  -->
+  <div class="resena">
+    <div class="resena-header">
+      <span class="resena-nick">@musiclover22</span>
+      <span class="resena-estrellas">★★★★★</span>
+    </div>
+    <p class="resena-texto">"Me encanta el Radar — he conocido gente con mis mismos gustos musicales que vive a dos calles de mí. Una pasada."</p>
+  </div>
+  <div class="resena">
+    <div class="resena-header">
+      <span class="resena-nick">Andrea R.</span>
+      <span class="resena-estrellas">★★★★☆</span>
+    </div>
+    <p class="resena-texto">"Los duelos son adictivos, llevo semanas retando a mis amigos. Le pondría más canciones favoritas guardadas pero por lo demás genial."</p>
+  </div>
+  <div class="resena">
+    <div class="resena-header">
+      <span class="resena-nick">@vinilo_dj</span>
+      <span class="resena-estrellas">★★★★★</span>
+    </div>
+    <p class="resena-texto">"El Trending es lo que más uso, descubro canciones que están a punto de explotar antes que nadie."</p>
+  </div>
 </section>
 
 <section>
