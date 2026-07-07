@@ -11,6 +11,8 @@
     header h1 { font-size: 26px; font-weight: 800; letter-spacing: 1px; }
     header h1 span { color: #A78BFA; }
     header p { color: #888; font-size: 13px; margin-top: 2px; }
+    .lang-btn { margin-left: auto; background: #1E1E2E; border: 1px solid #3D3D6B; color: #A78BFA; font-weight: 700; font-size: 13px; padding: 7px 14px; border-radius: 20px; cursor: pointer; flex-shrink: 0; }
+    .lang-btn:hover { background: #3D3D6B; }
     .hero { background: linear-gradient(135deg, #1A0A2E, #0A0A0F); padding: 48px 24px; text-align: center; border-bottom: 1px solid #1E1E2E; }
     .hero h2 { font-size: 28px; font-weight: 800; margin-bottom: 12px; }
     .hero h2 span { color: #A78BFA; }
@@ -56,9 +58,12 @@
 <header>
   <div>
     <h1>My<span>Vibe</span></h1>
-    <p>Tu momento. Tu música.</p>
+    <p id="header-sub">Tu momento. Tu música.</p>
   </div>
+  <button class="lang-btn" id="lang-btn" onclick="toggleLang()">ENG</button>
 </header>
+
+<div id="main-content">
 
 <div class="hero">
   <h2>Comparte lo que <span>estás escuchando</span></h2>
@@ -217,40 +222,24 @@
     <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="#FFD700" stroke-width="1.6" fill="none" stroke-linejoin="round"/></svg>
     Lo que dicen los usuarios
   </h3>
-
-  <!--
-    RESEÑAS MANUALES — no conectadas a Supabase, edítalas a mano.
-    Para añadir una: copia un bloque <div class="resena">...</div> completo y cambia nick, estrellas y texto.
-    Para quitar una: borra su bloque <div class="resena">...</div> entero.
-    Estrellas: usa entre 1 y 5 símbolos ★ (y ☆ para las que faltan hasta 5, opcional).
-  -->
   <div class="resena">
-    <div class="resena-header">
-      <span class="resena-nick">@musiclover22</span>
-      <span class="resena-estrellas">★★★★★</span>
-    </div>
+    <div class="resena-header"><span class="resena-nick">@musiclover22</span><span class="resena-estrellas">★★★★★</span></div>
     <p class="resena-texto">"Me encanta el Radar — he conocido gente con mis mismos gustos musicales que vive a dos calles de mí. Una pasada."</p>
   </div>
   <div class="resena">
-    <div class="resena-header">
-      <span class="resena-nick">Andrea R.</span>
-      <span class="resena-estrellas">★★★★☆</span>
-    </div>
+    <div class="resena-header"><span class="resena-nick">Andrea R.</span><span class="resena-estrellas">★★★★☆</span></div>
     <p class="resena-texto">"Los duelos son adictivos, llevo semanas retando a mis amigos. Le pondría más canciones favoritas guardadas pero por lo demás genial."</p>
   </div>
   <div class="resena">
-    <div class="resena-header">
-      <span class="resena-nick">@vinilo_dj</span>
-      <span class="resena-estrellas">★★★★★</span>
-    </div>
+    <div class="resena-header"><span class="resena-nick">@vinilo_dj</span><span class="resena-estrellas">★★★★★</span></div>
     <p class="resena-texto">"El Trending es lo que más uso, descubro canciones que están a punto de explotar antes que nadie."</p>
   </div>
 </section>
 
 <section>
   <div class="opinion">
-    <h3 style="border:none;padding:0;">Cuéntanos qué piensas</h3>
-    <p>Tu opinión ayuda a mejorar MyVibe. Solo tarda 1 minuto.</p>
+    <h3 id="opinion-titulo" style="border:none;padding:0;">Cuéntanos qué piensas</h3>
+    <p id="opinion-sub">Tu opinión ayuda a mejorar MyVibe. Solo tarda 1 minuto.</p>
     <input type="text" id="nick" placeholder="Tu nick en MyVibe (opcional)" />
     <select id="valoracion">
       <option value="">¿Qué te parece la app?</option>
@@ -261,10 +250,12 @@
       <option value="1">★ Mala</option>
     </select>
     <textarea id="opinion" placeholder="¿Qué mejorarías? ¿Qué te gusta más? ¿Algo que no funciona?"></textarea>
-    <button onclick="enviar()">Enviar opinión</button>
+    <button id="opinion-btn" onclick="enviar()">Enviar opinión</button>
     <div class="ok" id="ok">✅ ¡Gracias! Tu opinión ha sido enviada.</div>
   </div>
 </section>
+
+</div><!-- fin #main-content -->
 
 <footer>
  MyVibe © 2026 · <a href="/legal.html" style="color:#A78BFA">Términos y Privacidad</a> · <a href="/aviso-legal.html" style="color:#A78BFA">Aviso Legal</a>
@@ -299,6 +290,150 @@
     document.getElementById('nick').value = '';
     document.getElementById('valoracion').value = '';
     document.getElementById('opinion').value = '';
+  }
+
+  // === IDIOMA ===
+  let currentLang = 'es';
+
+  const TEXTOS = {
+    es: {
+      sub: 'Tu momento. Tu música.',
+      btn: 'ENG',
+      hero_h2: 'Comparte lo que <span>estás escuchando</span>',
+      hero_p: 'MyVibe es la app para compartir tu canción del día, conectar con gente cerca que escucha lo mismo y retarte a duelos musicales.',
+      badges: ['Vibe diario','Radar musical','Duelos','Tribus','Trending'],
+      que_es: '¿Qué es MyVibe?',
+      items: [
+        { h: 'Una app para TODAS las plataformas', p: 'Tú usas Spotify, tu colega Apple Music, otro YouTube. En MyVibe da igual. Compartes la canción y cada uno la abre en su plataforma con un toque. Sin capturas, sin pegar, sin salir de la app.' },
+        { h: 'La pantalla se pone roja y el móvil vibra', p: 'Cuando alguien cerca tiene un gusto muy parecido al tuyo, su tarjeta se ilumina en rojo, palpita y el móvil vibra. Un flechazo musical. Tocas su tarjeta y te dice exactamente qué artistas tenéis en común.' },
+        { h: 'Trending que premia lo que ARRANCA', p: 'El ranking no va de lo más escuchado de siempre. Va de lo que está explotando ahora. Una canción desconocida que de repente la pone mucha gente sube como un cohete.' },
+        { h: 'Duelos de Vibe', p: 'Retas a un amigo: tu canción contra la suya. La gente vota. Gana la mejor. Sumas puntos, subes de rango y desbloqueas insignias.' },
+        { h: 'Eco-Cápsulas — próximamente', p: 'Deja una canción enterrada en un lugar físico real. Solo la encuentra quien pase exactamente por ese sitio. Un tesoro sonoro escondido en tu ciudad.' }
+      ],
+      ayuda: 'Ayuda por pantalla',
+      pantallas: [
+        { titulo: 'Pantalla Inicio', intro: '¿Qué encontrarás aquí? Tu vibe del día y el feed con las canciones de tus amigos y la comunidad.', items: ['Publica la canción que estás escuchando ahora — solo una por franja del día.','El feed está bloqueado hasta que publicas. Primero tú, luego ves los demás.','Reacciona a los vibes de tus amigos: Temazo · Descubrimiento · Meh · No es lo mío · Guardar.','Usa el buscador para encontrar tu canción en Spotify o iTunes.','Escucha un preview de 30 segundos antes de publicar.','Debajo del feed de hoy verás los vibes de ayer y anteayer colapsados.'] },
+        { titulo: 'Pantalla Radar', intro: '¿Qué encontrarás aquí? Usuarios de MyVibe que están cerca de ti en este momento.', items: ['Solo aparecen personas activas en los últimos 15 minutos.','La app calcula en silencio cuánto coincide tu música con la de cada persona cercana.','Si hay afinidad muy alta, la tarjeta se ilumina en rojo y el móvil vibra. Tócala para ver qué artistas tenéis en común.','Pulsa Amistad para enviarle una solicitud con mensaje.','Pulsa Duelo para retarle con una canción.','Pulsa el icono de radar para actualizar manualmente.'] },
+        { titulo: 'Pantalla Tribu', intro: '¿Qué encontrarás aquí? Tus grupos musicales y tu lista de amigos con chat.', items: ['Crea una Tribu pública (entra quien quiera) o privada (con código secreto).','Dentro de la tribu compartís canciones, comentáis y veis qué suena en el grupo.','En la pestaña Amigos tienes el chat directo con cada amigo.','Desde Amigos también puedes retar a duelos directamente.','Si tienes mensajes nuevos verás un punto rojo en el avatar del amigo.'] },
+        { titulo: 'Pantalla Trending', intro: '¿Qué encontrarás aquí? Las canciones que más están petando en MyVibe ahora mismo.', items: ['Modo Global: canciones populares en toda la app.','Modo Local: solo canciones populares cerca de ti.','Explosiva = subió muchísimo en poco tiempo. Subiendo = va por buen camino. Nueva = acaba de entrar.','El Historial muestra cómo han evolucionado las canciones día a día.','Publicando tu vibe cada día puedes empujar canciones en el ranking.'] },
+        { titulo: 'Pantalla ID (Perfil)', intro: '¿Qué encontrarás aquí? Tu identidad en MyVibe, tus logros y tus canciones guardadas.', items: ['Personaliza tu avatar: pelo, color, gafas, tono de piel y expresión.','Tus puntos suben publicando vibes (+5) y ganando duelos (+15). De Novato a Leyenda.','En Guardados tienes todas las canciones que marcaste desde el feed.','Comparte tu perfil con otros usuarios por código QR o por nick.','Elige tu plataforma musical favorita en Ajustes — todos los enlaces de canciones se abrirán en ella.','Desde aquí también accedes a tus Tribus y a tus Duelos activos.'] }
+      ],
+      resenas_titulo: 'Lo que dicen los usuarios',
+      resenas: [
+        { nick: '@musiclover22', stars: '★★★★★', texto: '"Me encanta el Radar — he conocido gente con mis mismos gustos musicales que vive a dos calles de mí. Una pasada."' },
+        { nick: 'Andrea R.', stars: '★★★★☆', texto: '"Los duelos son adictivos, llevo semanas retando a mis amigos. Le pondría más canciones favoritas guardadas pero por lo demás genial."' },
+        { nick: '@vinilo_dj', stars: '★★★★★', texto: '"El Trending es lo que más uso, descubro canciones que están a punto de explotar antes que nadie."' }
+      ],
+      opinion_titulo: 'Cuéntanos qué piensas',
+      opinion_sub: 'Tu opinión ayuda a mejorar MyVibe. Solo tarda 1 minuto.',
+      nick_ph: 'Tu nick en MyVibe (opcional)',
+      val_ph: '¿Qué te parece la app?',
+      vals: ['★★★★★ Muy buena','★★★★ Buena','★★★ Normal','★★ Mejorable','★ Mala'],
+      opinion_ph: '¿Qué mejorarías? ¿Qué te gusta más? ¿Algo que no funciona?',
+      enviar: 'Enviar opinión',
+      ok: '✅ ¡Gracias! Tu opinión ha sido enviada.'
+    },
+    en: {
+      sub: 'Your moment. Your music.',
+      btn: 'ESP',
+      hero_h2: "Share what you're <span>listening to</span>",
+      hero_p: 'MyVibe is the app to share your song of the day, connect with nearby people who listen to the same music, and challenge others to music battles.',
+      badges: ['Daily Vibe','Music Radar','Battles','Tribes','Trending'],
+      que_es: 'What is MyVibe?',
+      items: [
+        { h: 'An app for ALL platforms', p: 'You use Spotify, your friend uses Apple Music, another uses YouTube. In MyVibe it doesn\'t matter. Share the song and everyone opens it on their platform with one tap. No screenshots, no copying, no leaving the app.' },
+        { h: 'The screen turns red and your phone vibrates', p: 'When someone nearby has very similar taste to yours, their card lights up red, pulses, and your phone vibrates. A musical spark. Tap their card and it tells you exactly which artists you have in common.' },
+        { h: 'Trending that rewards what\'s TAKING OFF', p: 'The ranking isn\'t about the most listened ever. It\'s about what\'s exploding right now. An unknown song that suddenly lots of people are posting rockets up the chart.' },
+        { h: 'Vibe Battles', p: 'Challenge a friend: your song vs theirs. People vote. The best one wins. Earn points, level up and unlock badges.' },
+        { h: 'Eco-Capsules — coming soon', p: 'Leave a song buried in a real physical location. Only someone who passes exactly through that spot can find it. A sonic treasure hidden in your city.' }
+      ],
+      ayuda: 'Help by screen',
+      pantallas: [
+        { titulo: 'Home Screen', intro: 'What will you find here? Your vibe of the day and the feed with songs from your friends and the community.', items: ['Post the song you\'re listening to right now — only one per time slot per day.','The feed is locked until you post. First you, then you see the rest.','React to your friends\' vibes: Banger · Discovery · Meh · Not my thing · Save.','Use the search bar to find your song on Spotify or iTunes.','Listen to a 30-second preview before posting.','Below today\'s feed you\'ll see yesterday\'s and the day before\'s vibes, collapsed.'] },
+        { titulo: 'Radar Screen', intro: 'What will you find here? MyVibe users who are near you right now.', items: ['Only people active in the last 15 minutes appear.','The app quietly calculates how much your music overlaps with each nearby person\'s.','If there\'s a very high match, the card lights up red and your phone vibrates. Tap it to see which artists you share.','Tap Friendship to send them a request with a message.','Tap Battle to challenge them with a song.','Tap the radar icon to refresh manually.'] },
+        { titulo: 'Tribe Screen', intro: 'What will you find here? Your music groups and your friends list with chat.', items: ['Create a public Tribe (anyone can join) or private (with a secret code).','Inside the tribe you share songs, comment and see what\'s playing in the group.','In the Friends tab you have direct chat with each friend.','From Friends you can also challenge to battles directly.','If you have new messages you\'ll see a red dot on the friend\'s avatar.'] },
+        { titulo: 'Trending Screen', intro: 'What will you find here? The songs that are blowing up on MyVibe right now.', items: ['Global mode: songs popular across the whole app.','Local mode: only songs popular near you.','Explosive = rose a lot in a short time. Rising = on a good path. New = just entered.','The History shows how songs have evolved day by day.','By posting your vibe every day you can push songs up the ranking.'] },
+        { titulo: 'ID Screen (Profile)', intro: 'What will you find here? Your MyVibe identity, your achievements and your saved songs.', items: ['Customize your avatar: hair, color, glasses, skin tone and expression.','Your points go up by posting vibes (+5) and winning battles (+15). From Rookie to Legend.','In Saved you have all the songs you bookmarked from the feed.','Share your profile with other users via QR code or nick.','Choose your favorite music platform in Settings — all song links will open there.','From here you also access your Tribes and active Battles.'] }
+      ],
+      resenas_titulo: 'What users say',
+      resenas: [
+        { nick: '@musiclover22', stars: '★★★★★', texto: '"I love the Radar — I\'ve met people with the same music taste who live two streets away. Incredible."' },
+        { nick: 'Andrea R.', stars: '★★★★☆', texto: '"The battles are addictive, I\'ve been challenging my friends for weeks. I\'d add more saved favorites but otherwise brilliant."' },
+        { nick: '@vinilo_dj', stars: '★★★★★', texto: '"Trending is what I use most, I discover songs that are about to blow up before anyone else."' }
+      ],
+      opinion_titulo: 'Share your thoughts',
+      opinion_sub: 'Your feedback helps improve MyVibe. Takes just 1 minute.',
+      nick_ph: 'Your MyVibe nick (optional)',
+      val_ph: 'How do you rate the app?',
+      vals: ['★★★★★ Excellent','★★★★ Good','★★★ Average','★★ Needs work','★ Poor'],
+      opinion_ph: 'What would you improve? What do you like most? Anything not working?',
+      enviar: 'Send feedback',
+      ok: '✅ Thanks! Your feedback has been sent.'
+    }
+  };
+
+  function toggleLang() {
+    currentLang = currentLang === 'es' ? 'en' : 'es';
+    const t = TEXTOS[currentLang];
+
+    document.getElementById('header-sub').textContent = t.sub;
+    document.getElementById('lang-btn').textContent = t.btn;
+
+    // Hero
+    document.querySelector('.hero h2').innerHTML = t.hero_h2;
+    document.querySelector('.hero > p').textContent = t.hero_p;
+
+    // Badges
+    const badgeEls = document.querySelectorAll('.badge');
+    t.badges.forEach((txt, i) => {
+      const b = badgeEls[i];
+      const svg = b.querySelector('svg');
+      b.textContent = txt;
+      if (svg) b.insertBefore(svg, b.firstChild);
+    });
+
+    // Sección Qué es
+    const seccionTitulos = document.querySelectorAll('section h3');
+    seccionTitulos[0].childNodes[seccionTitulos[0].childNodes.length - 1].textContent = ' ' + t.que_es;
+
+    // Items
+    const itemTextos = document.querySelectorAll('.item .texto');
+    t.items.forEach((item, i) => {
+      itemTextos[i].querySelector('h4').textContent = item.h;
+      itemTextos[i].querySelector('p').textContent = item.p;
+    });
+
+    // Ayuda
+    seccionTitulos[1].childNodes[seccionTitulos[1].childNodes.length - 1].textContent = ' ' + t.ayuda;
+
+    // Pantallas
+    const pantallas = document.querySelectorAll('.pantalla');
+    t.pantallas.forEach((p, i) => {
+      pantallas[i].querySelector('h4').textContent = p.titulo;
+      const body = pantallas[i].querySelector('.pantalla-body');
+      body.querySelector('p').innerHTML = '<strong>' + p.intro + '</strong>';
+      const ul = body.querySelector('ul');
+      ul.innerHTML = p.items.map(li => '<li>' + li + '</li>').join('');
+    });
+
+    // Reseñas
+    seccionTitulos[2].childNodes[seccionTitulos[2].childNodes.length - 1].textContent = ' ' + t.resenas_titulo;
+    const resenas = document.querySelectorAll('.resena');
+    t.resenas.forEach((r, i) => {
+      resenas[i].querySelector('.resena-texto').textContent = r.texto;
+    });
+
+    // Opinión
+    document.getElementById('opinion-titulo').textContent = t.opinion_titulo;
+    document.getElementById('opinion-sub').textContent = t.opinion_sub;
+    document.getElementById('nick').placeholder = t.nick_ph;
+    document.getElementById('opinion').placeholder = t.opinion_ph;
+    document.getElementById('opinion-btn').textContent = t.enviar;
+    document.getElementById('ok').textContent = t.ok;
+
+    const sel = document.getElementById('valoracion');
+    sel.options[0].text = t.val_ph;
+    t.vals.forEach((v, i) => { sel.options[i + 1].text = v; });
   }
 </script>
 
