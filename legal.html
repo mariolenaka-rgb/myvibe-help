@@ -7,10 +7,13 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #0A0A0F; color: #FFF; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-    header { background: #12121A; padding: 20px 24px; border-bottom: 1px solid #1E1E2E; display: flex; align-items: center; justify-content: space-between; }
+    header { background: #12121A; padding: 20px 24px; border-bottom: 1px solid #1E1E2E; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
     header h1 { font-size: 22px; font-weight: 800; }
     header h1 span { color: #A78BFA; }
     header a { color: #A78BFA; font-size: 13px; text-decoration: none; }
+    header .right { display: flex; align-items: center; gap: 14px; }
+    .lang-btn { background: #1E1E2E; border: 1px solid #3D3D6B; color: #A78BFA; font-weight: 700; font-size: 13px; padding: 7px 14px; border-radius: 20px; cursor: pointer; flex-shrink: 0; }
+    .lang-btn:hover { background: #3D3D6B; }
     section { padding: 40px 24px; max-width: 640px; margin: 0 auto; }
     h2 { color: #A78BFA; font-size: 20px; font-weight: 700; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid #1E1E2E; }
     .meta { color: #666; font-size: 12px; margin-bottom: 28px; }
@@ -25,9 +28,13 @@
 
 <header>
   <h1>My<span>Vibe</span></h1>
-  <a href="/">← Volver</a>
+  <div class="right">
+    <button class="lang-btn" id="lang-btn" onclick="toggleLang()">ENG</button>
+    <a href="/" id="volver-link">← Volver</a>
+  </div>
 </header>
 
+<div id="content-es">
 <section>
   <h2>Términos de Uso</h2>
   <p class="meta">Última actualización: junio 2026</p>
@@ -84,10 +91,84 @@
   <h3>Menores</h3>
   <p>MyVibe no está dirigida a menores de 18 años. Si detectamos que un usuario es menor de edad, eliminaremos su cuenta.</p>
 </section>
+</div>
+
+<div id="content-en" style="display:none">
+<section>
+  <h2>Terms of Use</h2>
+  <p class="meta">Last updated: June 2026</p>
+
+  <h3>1. Acceptance</h3>
+  <p>By using MyVibe you accept these terms. If you do not agree, do not use the application.</p>
+
+  <h3>2. Minimum age</h3>
+  <p>MyVibe is intended for users aged 18 or over. On first access, the user must actively confirm, by express declaration, that they are 18 years of age or older. If the user provides a false declaration about their age, any liability arising from such use rests exclusively with them, and MyVibe is exempt from any responsibility in this regard.</p>
+
+  <h3>3. User account</h3>
+  <p>Your account is created anonymously through a unique identifier (UUID). You are responsible for how you use your account and for the content you post.</p>
+
+  <h3>4. Posted content</h3>
+  <p>You agree not to post offensive or illegal content, or content that infringes the rights of third parties. MyVibe reserves the right to remove inappropriate content.</p>
+
+  <h3>5. Intellectual property</h3>
+  <p>The songs referenced in MyVibe belong to their respective authors and record labels. MyVibe only stores references and does not host content protected by copyright.</p>
+
+  <h3>6. Changes</h3>
+  <p>We may update these terms at any time. We will notify you of significant changes through the application.</p>
+
+  <div class="divider"></div>
+
+  <h2>Privacy Policy</h2>
+  <p class="meta">GDPR compliant · LOPDGDD (Spain)</p>
+
+  <h3>What data do we collect?</h3>
+  <ul>
+    <li>Anonymous unique identifier (UUID), generated automatically</li>
+    <li>Username (nick) chosen by you</li>
+    <li>Precise GPS location (latitude and longitude), only while the app is in the foreground and you activate Radar or Eco-Capsules. It is overwritten in real time — we do not store location history.</li>
+    <li>Songs and vibes you post voluntarily</li>
+    <li>Selected song fragment (start time and duration in seconds) when posting a vibe</li>
+  </ul>
+
+  <h3>What do we use your data for?</h3>
+  <ul>
+    <li>Showing you nearby users with similar music taste (Radar)</li>
+    <li>Letting you share songs with your community</li>
+    <li>Calculating music trends in your area</li>
+    <li>Improving the app experience</li>
+  </ul>
+
+  <h3>Who do we share your data with?</h3>
+  <p>We use Supabase as our secure database provider. We do not sell or share your data with third parties for advertising or commercial purposes.</p>
+
+  <h3>Your rights</h3>
+  <p>You have the right to access, rectify and delete your data at any time. To exercise these rights, contact us through the application.</p>
+
+  <h3>Location</h3>
+  <p>Access to your location is optional. It is only used when you activate Radar or Eco-Capsules, and is never shared with third parties.</p>
+
+  <h3>Minors</h3>
+  <p>MyVibe is not directed at users under 18. If we detect that a user is a minor, we will delete their account.</p>
+</section>
+</div>
 
 <footer>
-  MyVibe © 2026 · <a href="/" style="color:#A78BFA">Inicio</a>
+  MyVibe © 2026 · <a href="/" style="color:#A78BFA" id="footer-link">Inicio</a>
 </footer>
+
+<script>
+  let currentLang = 'es';
+  function toggleLang() {
+    currentLang = currentLang === 'es' ? 'en' : 'es';
+    const esOn = currentLang === 'es';
+    document.getElementById('content-es').style.display = esOn ? 'block' : 'none';
+    document.getElementById('content-en').style.display = esOn ? 'none' : 'block';
+    document.getElementById('lang-btn').textContent = esOn ? 'ENG' : 'ESP';
+    document.getElementById('volver-link').textContent = esOn ? '← Volver' : '← Back';
+    document.getElementById('footer-link').textContent = esOn ? 'Inicio' : 'Home';
+    document.documentElement.lang = currentLang;
+  }
+</script>
 
 </body>
 </html>
