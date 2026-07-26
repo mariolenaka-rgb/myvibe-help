@@ -1,83 +1,170 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tus derechos · MyVibe</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyVibe — Tus Derechos</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0A0A0F; color: #FFF; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+    header { background: #12121A; padding: 20px 24px; border-bottom: 1px solid #1E1E2E; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+    header h1 { font-size: 22px; font-weight: 800; }
+    header h1 span { color: #A78BFA; }
+    header a { color: #A78BFA; font-size: 13px; text-decoration: none; }
+    header .right { display: flex; align-items: center; gap: 14px; }
+    .lang-btn { background: #1E1E2E; border: 1px solid #3D3D6B; color: #A78BFA; font-weight: 700; font-size: 13px; padding: 7px 14px; border-radius: 20px; cursor: pointer; flex-shrink: 0; }
+    .lang-btn:hover { background: #3D3D6B; }
+    section { padding: 40px 24px; max-width: 640px; margin: 0 auto; }
+    h2 { color: #A78BFA; font-size: 20px; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #1E1E2E; }
+    h3 { color: #FFF; font-size: 14px; font-weight: 700; margin: 20px 0 8px; }
+    p, li { color: #AAA; font-size: 13px; line-height: 1.8; margin-bottom: 10px; }
+    ul { padding-left: 16px; margin-bottom: 10px; }
+    .meta { color: #666; font-size: 12px; margin-bottom: 28px; }
+    .divider { height: 1px; background: #1E1E2E; margin: 32px 0; }
+    footer { text-align: center; padding: 32px 24px; color: #444; font-size: 12px; border-top: 1px solid #1E1E2E; margin-top: 40px; }
+  </style>
 </head>
 <body>
-  <header>
-    <img src="logo_myvibe.png" alt="MyVibe" class="logo">
-    <nav>
-      <a href="index.html">Inicio</a>
-      <a href="privacidad.html">Privacidad</a>
-      <a href="derechos.html" class="activo">Derechos</a>
-    </nav>
-  </header>
 
-  <main>
-    <h1>Tus derechos sobre tus datos</h1>
-    <p>Conforme al RGPD (UE 2016/679) y la LOPDGDD tienes los siguientes derechos sobre tus datos en MyVibe:</p>
+<header>
+  <h1>My<span>Vibe</span></h1>
+  <div class="right">
+    <button class="lang-btn" id="lang-btn" onclick="toggleLang()">ENG</button>
+    <a href="/" id="volver-link">← Volver</a>
+  </div>
+</header>
 
-    <div class="bloque-derecho">
-      <h2>📋 Acceso</h2>
-      <p>Puedes saber qué datos personales guardamos sobre ti en cualquier momento.</p>
-    </div>
+<div id="content-es">
+<section>
+  <h2>Tus derechos sobre tus datos</h2>
+  <p class="meta">Conforme al RGPD (UE 2016/679) y la LOPDGDD</p>
 
-    <div class="bloque-derecho">
-      <h2>✏️ Rectificación</h2>
-      <p>Puedes corregir datos incorrectos o incompletos.</p>
-    </div>
+  <h3>Acceso</h3>
+  <p>Puedes saber qué datos personales guardamos sobre ti en cualquier momento.</p>
 
-    <div class="bloque-derecho">
-      <h2>🗑️ Supresión (derecho al olvido)</h2>
-      <p>Puedes solicitar el borrado completo de tu cuenta y todos tus datos. Ejecutamos la solicitud en un máximo de 30 días.</p>
-    </div>
+  <div class="divider"></div>
 
-    <div class="bloque-derecho">
-      <h2>🚫 Oposición</h2>
-      <p>Puedes oponerte al tratamiento de tus datos para cualquier finalidad concreta.</p>
-    </div>
+  <h3>Rectificación</h3>
+  <p>Puedes corregir datos incorrectos o incompletos.</p>
 
-    <div class="bloque-derecho">
-      <h2>📦 Portabilidad</h2>
-      <p>Puedes solicitar una copia de tus datos en formato descargable.</p>
-    </div>
+  <div class="divider"></div>
 
-    <div class="bloque-derecho">
-      <h2>⏸️ Limitación</h2>
-      <p>Puedes solicitar que suspendamos el tratamiento de tus datos mientras resolvemos una reclamación.</p>
-    </div>
+  <h3>Supresión (derecho al olvido)</h3>
+  <p>Puedes solicitar el borrado completo de tu cuenta y todos tus datos. Ejecutamos la solicitud en un máximo de 30 días.</p>
 
-    <div class="bloque-contacto">
-      <h2>¿Cómo ejercer tus derechos?</h2>
-      <p>Escríbenos a <a href="mailto:soporte@myvibe.es">soporte@myvibe.es</a> indicando:</p>
-      <ul>
-        <li>Tu nick en MyVibe</li>
-        <li>El derecho que quieres ejercer</li>
-        <li>Breve descripción de tu solicitud</li>
-      </ul>
-      <p>Respondemos en un máximo de <strong>30 días</strong>.</p>
-    </div>
+  <div class="divider"></div>
 
-    <div class="bloque-contacto">
-      <h2>¿No quedas satisfecho?</h2>
-      <p>Puedes reclamar ante la <a href="https://www.aepd.es" target="_blank">Agencia Española de Protección de Datos (AEPD)</a>.</p>
-    </div>
+  <h3>Oposición</h3>
+  <p>Puedes oponerte al tratamiento de tus datos para cualquier finalidad concreta.</p>
 
-    <div class="bloque-responsable">
-      <h2>Responsable del tratamiento</h2>
-      <p>Mario Blanco Alcalá<br>
-      El Viso del Alcor, Sevilla, España<br>
-      <a href="mailto:soporte@myvibe.es">soporte@myvibe.es</a></p>
-    </div>
-  </main>
+  <div class="divider"></div>
 
-  <footer>
-    <p>© 2026 MyVibe · 
-    <a href="privacidad.html">Política de privacidad</a> · 
-    <a href="derechos.html">Tus derechos</a></p>
-  </footer>
+  <h3>Portabilidad</h3>
+  <p>Puedes solicitar una copia de tus datos en formato descargable.</p>
+
+  <div class="divider"></div>
+
+  <h3>Limitación</h3>
+  <p>Puedes solicitar que suspendamos el tratamiento de tus datos mientras resolvemos una reclamación.</p>
+
+  <div class="divider"></div>
+
+  <h3>¿Cómo ejercer tus derechos?</h3>
+  <p>Escríbenos a <a href="mailto:soporte@myvibe.es" style="color:#A78BFA">soporte@myvibe.es</a> indicando:</p>
+  <ul>
+    <li>Tu nick en MyVibe</li>
+    <li>El derecho que quieres ejercer</li>
+    <li>Breve descripción de tu solicitud</li>
+  </ul>
+  <p>Respondemos en un máximo de <strong>30 días</strong>.</p>
+
+  <div class="divider"></div>
+
+  <h3>¿No quedas satisfecho?</h3>
+  <p>Puedes reclamar ante la <a href="https://www.aepd.es" target="_blank" style="color:#A78BFA">Agencia Española de Protección de Datos (AEPD)</a>.</p>
+
+  <div class="divider"></div>
+
+  <h3>Responsable del tratamiento</h3>
+  <p>Mario Blanco Alcalá · El Viso del Alcor, Sevilla, España · <a href="mailto:soporte@myvibe.es" style="color:#A78BFA">soporte@myvibe.es</a></p>
+</section>
+</div>
+
+<div id="content-en" style="display:none">
+<section>
+  <h2>Your rights over your data</h2>
+  <p class="meta">In accordance with GDPR (EU 2016/679) and LOPDGDD</p>
+
+  <h3>Access</h3>
+  <p>You can find out what personal data we hold about you at any time.</p>
+
+  <div class="divider"></div>
+
+  <h3>Rectification</h3>
+  <p>You can correct inaccurate or incomplete data.</p>
+
+  <div class="divider"></div>
+
+  <h3>Erasure (right to be forgotten)</h3>
+  <p>You can request the complete deletion of your account and all your data. We carry out the request within a maximum of 30 days.</p>
+
+  <div class="divider"></div>
+
+  <h3>Objection</h3>
+  <p>You can object to the processing of your data for any specific purpose.</p>
+
+  <div class="divider"></div>
+
+  <h3>Portability</h3>
+  <p>You can request a copy of your data in a downloadable format.</p>
+
+  <div class="divider"></div>
+
+  <h3>Restriction</h3>
+  <p>You can request that we suspend processing your data while we resolve a complaint.</p>
+
+  <div class="divider"></div>
+
+  <h3>How to exercise your rights</h3>
+  <p>Write to us at <a href="mailto:soporte@myvibe.es" style="color:#A78BFA">soporte@myvibe.es</a> including:</p>
+  <ul>
+    <li>Your MyVibe nick</li>
+    <li>Which right you want to exercise</li>
+    <li>A brief description of your request</li>
+  </ul>
+  <p>We respond within a maximum of <strong>30 days</strong>.</p>
+
+  <div class="divider"></div>
+
+  <h3>Not satisfied?</h3>
+  <p>You can file a complaint with the <a href="https://www.aepd.es" target="_blank" style="color:#A78BFA">Spanish Data Protection Agency (AEPD)</a>.</p>
+
+  <div class="divider"></div>
+
+  <h3>Data controller</h3>
+  <p>Mario Blanco Alcalá · El Viso del Alcor, Seville, Spain · <a href="mailto:soporte@myvibe.es" style="color:#A78BFA">soporte@myvibe.es</a></p>
+</section>
+</div>
+
+<footer>
+  MyVibe © 2026 · Mario Blanco Alcalá · <a href="/" style="color:#A78BFA" id="footer-link">Inicio</a> · <a href="/privacidad.html" style="color:#A78BFA" id="footer-priv-link">Política de privacidad</a> · <a href="/derechos.html" style="color:#A78BFA" id="footer-derechos-link">Tus derechos</a>
+</footer>
+
+<script>
+  let currentLang = 'es';
+  function toggleLang() {
+    currentLang = currentLang === 'es' ? 'en' : 'es';
+    const esOn = currentLang === 'es';
+    document.getElementById('content-es').style.display = esOn ? 'block' : 'none';
+    document.getElementById('content-en').style.display = esOn ? 'none' : 'block';
+    document.getElementById('lang-btn').textContent = esOn ? 'ENG' : 'ESP';
+    document.getElementById('volver-link').textContent = esOn ? '← Volver' : '← Back';
+    document.getElementById('footer-link').textContent = esOn ? 'Inicio' : 'Home';
+    document.getElementById('footer-priv-link').textContent = esOn ? 'Política de privacidad' : 'Privacy policy';
+    document.getElementById('footer-derechos-link').textContent = esOn ? 'Tus derechos' : 'Your rights';
+    document.documentElement.lang = currentLang;
+  }
+</script>
+
 </body>
 </html>
