@@ -7,10 +7,13 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #0A0A0F; color: #FFF; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-    header { background: #12121A; padding: 20px 24px; border-bottom: 1px solid #1E1E2E; display: flex; align-items: center; justify-content: space-between; }
+    header { background: #12121A; padding: 20px 24px; border-bottom: 1px solid #1E1E2E; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
     header h1 { font-size: 22px; font-weight: 800; }
     header h1 span { color: #A78BFA; }
     header a { color: #A78BFA; font-size: 13px; text-decoration: none; }
+    header .right { display: flex; align-items: center; gap: 14px; }
+    .lang-btn { background: #1E1E2E; border: 1px solid #3D3D6B; color: #A78BFA; font-weight: 700; font-size: 13px; padding: 7px 14px; border-radius: 20px; cursor: pointer; flex-shrink: 0; }
+    .lang-btn:hover { background: #3D3D6B; }
     section { padding: 40px 24px; max-width: 640px; margin: 0 auto; }
     h2 { color: #A78BFA; font-size: 20px; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #1E1E2E; }
     h3 { color: #FFF; font-size: 14px; font-weight: 700; margin: 20px 0 8px; }
@@ -25,9 +28,13 @@
 
 <header>
   <h1>My<span>Vibe</span></h1>
-  <a href="/">← Volver</a>
+  <div class="right">
+    <button class="lang-btn" id="lang-btn" onclick="toggleLang()">ENG</button>
+    <a href="/" id="volver-link">← Volver</a>
+  </div>
 </header>
 
+<div id="content-es">
 <section>
   <h2>Política de Privacidad</h2>
   <p class="meta">Última actualización: julio 2026</p>
@@ -93,10 +100,94 @@
   <p>Si detectamos uso por menores de 18 años, eliminamos la cuenta inmediatamente.</p>
 
 </section>
+</div>
+
+<div id="content-en" style="display:none">
+<section>
+  <h2>Privacy Policy</h2>
+  <p class="meta">Last updated: July 2026</p>
+
+  <h3>Data controller</h3>
+  <p>Mario Blanco Alcalá · El Viso del Alcor, Seville, Spain · <a href="mailto:soporte@myvibe.es" style="color:#A78BFA">soporte@myvibe.es</a></p>
+
+  <div class="divider"></div>
+
+  <h3>Data we collect</h3>
+  <ul>
+    <li>Anonymous unique identifier (UUID), generated automatically</li>
+    <li>Username (nick) chosen by the user</li>
+    <li>Date of birth (for age verification)</li>
+    <li>Precise GPS location (latitude and longitude), only while the app is in the foreground and you activate Radar or Eco-Capsules. It is overwritten in real time — we do not store location history. It is visible to other MyVibe users within the radius you choose.</li>
+    <li>Songs and vibes posted voluntarily</li>
+    <li>Selected song fragment (start time and duration in seconds) when posting a vibe</li>
+    <li>Push notification token (mobile devices only)</li>
+  </ul>
+
+  <div class="divider"></div>
+
+  <h3>Purpose</h3>
+  <ul>
+    <li>Connecting nearby users with similar music taste</li>
+    <li>Showing music trends</li>
+    <li>Sending activity notifications</li>
+    <li>Improving the app experience</li>
+  </ul>
+
+  <div class="divider"></div>
+
+  <h3>Legal basis</h3>
+  <p>User consent (Art. 6.1.a GDPR).</p>
+
+  <div class="divider"></div>
+
+  <h3>Minimum age</h3>
+  <p>MyVibe is available from age 18. On first access, the user must actively confirm they are 18 or older through an age verification screen. This declaration has legal value: if the user provides false information about their age, responsibility rests exclusively with them.</p>
+
+  <div class="divider"></div>
+
+  <h3>Providers</h3>
+  <ul>
+    <li>Supabase (database) — hosted in the EU</li>
+    <li>Expo (app distribution)</li>
+  </ul>
+  <p>We do not sell data to third parties nor use it for advertising.</p>
+
+  <div class="divider"></div>
+
+  <h3>Your rights</h3>
+  <p>Access, rectification, erasure, portability and objection. Contact: <a href="mailto:soporte@myvibe.es" style="color:#A78BFA">soporte@myvibe.es</a></p>
+
+  <div class="divider"></div>
+
+  <h3>Retention</h3>
+  <p>Data remains active for as long as the account exists. Deletion upon user request.</p>
+
+  <div class="divider"></div>
+
+  <h3>Minors</h3>
+  <p>If we detect use by anyone under 18, we delete the account immediately.</p>
+
+</section>
+</div>
 
 <footer>
-  MyVibe © 2026 · Mario Blanco Alcalá · <a href="/" style="color:#A78BFA">Inicio</a> · <a href="/legal.html" style="color:#A78BFA">Privacidad y Términos</a>
+  MyVibe © 2026 · Mario Blanco Alcalá · <a href="/" style="color:#A78BFA" id="footer-link">Inicio</a> · <a href="/legal.html" style="color:#A78BFA" id="footer-legal-link">Privacidad y Términos</a>
 </footer>
+
+<script>
+  let currentLang = 'es';
+  function toggleLang() {
+    currentLang = currentLang === 'es' ? 'en' : 'es';
+    const esOn = currentLang === 'es';
+    document.getElementById('content-es').style.display = esOn ? 'block' : 'none';
+    document.getElementById('content-en').style.display = esOn ? 'none' : 'block';
+    document.getElementById('lang-btn').textContent = esOn ? 'ENG' : 'ESP';
+    document.getElementById('volver-link').textContent = esOn ? '← Volver' : '← Back';
+    document.getElementById('footer-link').textContent = esOn ? 'Inicio' : 'Home';
+    document.getElementById('footer-legal-link').textContent = esOn ? 'Privacidad y Términos' : 'Privacy & Terms';
+    document.documentElement.lang = currentLang;
+  }
+</script>
 
 </body>
 </html>

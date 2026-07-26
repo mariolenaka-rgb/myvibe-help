@@ -7,10 +7,13 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #0A0A0F; color: #FFF; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-    header { background: #12121A; padding: 20px 24px; border-bottom: 1px solid #1E1E2E; display: flex; align-items: center; justify-content: space-between; }
+    header { background: #12121A; padding: 20px 24px; border-bottom: 1px solid #1E1E2E; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
     header h1 { font-size: 22px; font-weight: 800; }
     header h1 span { color: #A78BFA; }
     header a { color: #A78BFA; font-size: 13px; text-decoration: none; }
+    header .right { display: flex; align-items: center; gap: 14px; }
+    .lang-btn { background: #1E1E2E; border: 1px solid #3D3D6B; color: #A78BFA; font-weight: 700; font-size: 13px; padding: 7px 14px; border-radius: 20px; cursor: pointer; flex-shrink: 0; }
+    .lang-btn:hover { background: #3D3D6B; }
     section { padding: 40px 24px; max-width: 640px; margin: 0 auto; }
     h2 { color: #A78BFA; font-size: 20px; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #1E1E2E; }
     h3 { color: #FFF; font-size: 14px; font-weight: 700; margin: 20px 0 8px; }
@@ -24,9 +27,13 @@
 
 <header>
   <h1>My<span>Vibe</span></h1>
-  <a href="/">← Volver</a>
+  <div class="right">
+    <button class="lang-btn" id="lang-btn" onclick="toggleLang()">ENG</button>
+    <a href="/" id="volver-link">← Volver</a>
+  </div>
 </header>
 
+<div id="content-es">
 <section>
   <h2>Aviso Legal</h2>
   <p class="meta">Cumplimiento Ley 34/2002 (LSSI-CE) · Última actualización: junio 2026</p>
@@ -73,10 +80,75 @@
   <p>El presente Aviso Legal se rige por la legislación española. Para cualquier controversia derivada del acceso o uso de este sitio web, las partes se someten a los Juzgados y Tribunales de Sevilla, con renuncia expresa a cualquier otro fuero.</p>
 
 </section>
+</div>
+
+<div id="content-en" style="display:none">
+<section>
+  <h2>Legal Notice</h2>
+  <p class="meta">In compliance with Spanish Law 34/2002 (LSSI-CE) · Last updated: June 2026</p>
+
+  <h3>1. Owner identification</h3>
+  <p>In compliance with Article 10 of Law 34/2002, of 11 July, on Information Society Services and Electronic Commerce (LSSI-CE), the following is disclosed:</p>
+  <p><strong>Owner:</strong> Mario Blanco Alcalá</p>
+  <p><strong>Address:</strong> El Viso del Alcor, Seville, Spain</p>
+  <p><strong>Contact email:</strong> mario.lenakaka@gmail.com</p>
+  <p><strong>Domain:</strong> myvibe.es</p>
+
+  <div class="divider"></div>
+
+  <h3>2. Purpose and scope</h3>
+  <p>This Legal Notice governs access to and use of the website myvibe-help.vercel.app, as well as the MyVibe mobile application, owned by Mario Blanco Alcalá.</p>
+  <p>Accessing and using this website implies express acceptance of the conditions set out in this Legal Notice.</p>
+
+  <div class="divider"></div>
+
+  <h3>3. Intellectual and industrial property</h3>
+  <p>All content on this website and in the MyVibe application — including text, images, designs, source code, logos, algorithms and features — is the exclusive property of Mario Blanco Alcalá and is protected by Spanish and international intellectual and industrial property law.</p>
+  <p>Reproduction, distribution, public communication or transformation without the owner's prior written authorization is expressly prohibited.</p>
+  <p>The work has been registered with Safe Creative (June 2026) and authorship can be verified through the technical records available on verifiable third-party platforms.</p>
+
+  <div class="divider"></div>
+
+  <h3>4. Terms of use</h3>
+  <p>The user agrees to make lawful use of the content and services offered, in accordance with the law, and to refrain from using them for unlawful purposes or in ways that may harm third parties.</p>
+  <p>The owner reserves the right to modify, suspend or remove access to the website without prior notice.</p>
+
+  <div class="divider"></div>
+
+  <h3>5. Data protection</h3>
+  <p>The processing of personal data is governed by the Privacy Policy available in the MyVibe application and accessible via <a href="/legal.html" style="color:#A78BFA">this link</a>, in accordance with Regulation (EU) 2016/679 (GDPR) and Organic Law 3/2018 (LOPDGDD).</p>
+
+  <div class="divider"></div>
+
+  <h3>6. Cookies</h3>
+  <p>This website does not use its own tracking or advertising cookies. It may use strictly necessary technical cookies for the basic functioning of the service.</p>
+
+  <div class="divider"></div>
+
+  <h3>7. Applicable law and jurisdiction</h3>
+  <p>This Legal Notice is governed by Spanish law. For any dispute arising from access to or use of this website, the parties submit to the Courts of Seville, expressly waiving any other jurisdiction.</p>
+
+</section>
+</div>
 
 <footer>
-  MyVibe © 2026 · Mario Blanco Alcalá · <a href="/" style="color:#A78BFA">Inicio</a> · <a href="/legal.html" style="color:#A78BFA">Privacidad y Términos</a>
+  MyVibe © 2026 · Mario Blanco Alcalá · <a href="/" style="color:#A78BFA" id="footer-link">Inicio</a> · <a href="/legal.html" style="color:#A78BFA" id="footer-legal-link">Privacidad y Términos</a>
 </footer>
+
+<script>
+  let currentLang = 'es';
+  function toggleLang() {
+    currentLang = currentLang === 'es' ? 'en' : 'es';
+    const esOn = currentLang === 'es';
+    document.getElementById('content-es').style.display = esOn ? 'block' : 'none';
+    document.getElementById('content-en').style.display = esOn ? 'none' : 'block';
+    document.getElementById('lang-btn').textContent = esOn ? 'ENG' : 'ESP';
+    document.getElementById('volver-link').textContent = esOn ? '← Volver' : '← Back';
+    document.getElementById('footer-link').textContent = esOn ? 'Inicio' : 'Home';
+    document.getElementById('footer-legal-link').textContent = esOn ? 'Privacidad y Términos' : 'Privacy & Terms';
+    document.documentElement.lang = currentLang;
+  }
+</script>
 
 </body>
 </html>
