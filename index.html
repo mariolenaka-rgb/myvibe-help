@@ -25,15 +25,33 @@
     .item .icon { width: 40px; height: 40px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
     .item .texto h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
     .item .texto p { font-size: 13px; color: #AAA; line-height: 1.6; }
-    .pantalla { background: #12121A; border: 1px solid #1E1E2E; border-radius: 14px; padding: 20px; margin-bottom: 16px; }
-    .pantalla-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; cursor: pointer; }
-    .pantalla-header h4 { font-size: 16px; font-weight: 700; flex: 1; }
-    .pantalla-header .arrow { color: #A78BFA; font-size: 14px; }
-    .pantalla-body { display: none; }
+
+    /* Pantallas — fichas */
+    .pantalla { background: #12121A; border: 1px solid #1E1E2E; border-radius: 16px; margin-bottom: 14px; overflow: hidden; }
+    .pantalla-header { display: flex; align-items: center; gap: 12px; padding: 17px 18px; cursor: pointer; user-select: none; }
+    .pantalla-header .p-ico { width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .pantalla-header h4 { font-size: 15px; font-weight: 800; flex: 1; letter-spacing: -0.01em; }
+    .pantalla-header .arrow { color: #6A6A7C; font-size: 12px; transition: transform .18s, color .18s; }
+    .pantalla.abierto .pantalla-header .arrow { color: #A78BFA; }
+    .pantalla-body { display: none; padding: 0 16px 18px; }
     .pantalla-body.abierto { display: block; }
-    .pantalla-body p { color: #AAA; font-size: 13px; line-height: 1.7; margin-bottom: 10px; }
-    .pantalla-body ul { padding-left: 16px; }
-    .pantalla-body ul li { color: #AAA; font-size: 13px; line-height: 1.8; }
+    .p-intro { font-size: 12.5px; color: #9C9CAE; line-height: 1.6; background: #161620; border: 1px solid #1E1E2E; border-radius: 12px; padding: 12px 14px; margin-bottom: 12px; }
+    .p-intro strong { color: #F5F4FA; font-weight: 700; }
+    .grupo-titulo { font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #A78BFA; margin: 16px 2px 8px; }
+    .grupo-titulo:first-of-type { margin-top: 2px; }
+    .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    @media (max-width: 480px) { .tiles { grid-template-columns: 1fr; } }
+    .tile { background: #161620; border: 1px solid #1E1E2E; border-radius: 12px; padding: 11px 12px; display: flex; flex-direction: column; gap: 5px; }
+    .tile.full { grid-column: 1 / -1; }
+    .tile .row1 { display: flex; align-items: flex-start; gap: 8px; }
+    .tile .ticon { width: 24px; height: 24px; border-radius: 7px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: rgba(167,139,250,.12); }
+    .tile.accent-gold .ticon { background: rgba(255,215,0,.14); }
+    .tile.accent-red .ticon { background: rgba(255,107,107,.14); }
+    .tile h5 { font-size: 12.5px; font-weight: 700; line-height: 1.3; }
+    .tile p { font-size: 11.5px; color: #9C9CAE; line-height: 1.5; }
+    .tile .stat { align-self: flex-start; font-size: 10px; font-weight: 800; letter-spacing: .02em; color: #A78BFA; background: rgba(167,139,250,.12); border: 1px solid rgba(167,139,250,.25); border-radius: 6px; padding: 2px 7px; margin-top: 1px; }
+    .tile.accent-gold .stat { color: #FFD700; background: rgba(255,215,0,.1); border-color: rgba(255,215,0,.28); }
+
     .resena { background: #12121A; border: 1px solid #1E1E2E; border-radius: 14px; padding: 20px; margin-bottom: 16px; }
     .resena-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; gap: 12px; }
     .resena-nick { font-size: 14px; font-weight: 700; color: #FFF; }
@@ -116,7 +134,7 @@
   <div class="item"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M23 6l-9.5 9.5-5-5L1 18M17 6h6v6" stroke="#A78BFA" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="texto"><h4>Trending que premia lo que ARRANCA</h4><p>El ranking no va de lo más escuchado de siempre. Va de lo que está explotando ahora. Una canción desconocida que de repente la pone mucha gente sube como un cohete.</p></div></div>
   <div class="item"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M14.5 17.5L3 6V3h3l11.5 11.5M13 19l6-6M16 16l4 4M19 21l2-2M5 14l-4 4M2 21l3-3" stroke="#A78BFA" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="texto"><h4>Duelos de Vibe</h4><p>Retas a un amigo: tu canción contra la suya. La gente vota sin saber quién es quién — los nicks se revelan solo al terminar. Gana la mejor canción. Sumas puntos, subes de rango y desbloqueas insignias.</p></div></div>
   <div class="item"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 22s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" stroke="#A78BFA" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="#A78BFA" stroke-width="1.6" fill="none"/></svg></div><div class="texto"><h4>Eco-Cápsulas</h4><p>Deja una canción enterrada en un lugar físico real. Solo la encuentra quien pase exactamente por ese sitio. Un tesoro sonoro escondido en tu ciudad. Las cápsulas PRO son permanentes.</p></div></div>
-  <div class="item"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13" stroke="#A78BFA" stroke-width="1.6" fill="none" stroke-linecap="round"/><rect x="2" y="8" width="10" height="4" rx="1" stroke="#A78BFA" stroke-width="1.6" fill="none"/><line x1="7" y1="8" x2="7" y2="12" stroke="#A78BFA" stroke-width="1"/></svg></div><div class="texto"><h4>Elige tu fragmento de canción</h4><p>Al publicar tu vibe, decide exactamente qué segundos de la canción quieres compartir. Desliza la barra de onda para seleccionar el inicio y el fin del fragmento — elige el estribillo, el drop o tu parte favorita.</p></div></div>
+  <div class="item"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24"><rect x="1" y="14" width="2" height="6" rx="1" fill="#5B5B7A"/><rect x="4" y="10" width="2" height="10" rx="1" fill="#5B5B7A"/><rect x="7" y="6" width="2" height="14" rx="1" fill="#A78BFA"/><rect x="10" y="4" width="2" height="16" rx="1" fill="#A78BFA"/><rect x="13" y="6" width="2" height="14" rx="1" fill="#A78BFA"/><rect x="16" y="10" width="2" height="10" rx="1" fill="#A78BFA"/><rect x="19" y="13" width="2" height="7" rx="1" fill="#5B5B7A"/><rect x="22" y="15" width="1.5" height="5" rx="1" fill="#5B5B7A"/><rect x="5.5" y="2.5" width="13" height="18.5" rx="4" stroke="#A78BFA" stroke-width="1.4" fill="none"/><circle cx="5.5" cy="12" r="2" fill="#A78BFA"/><circle cx="18.5" cy="12" r="2" fill="#A78BFA"/></svg></div><div class="texto"><h4>Elige tu fragmento de canción</h4><p>Al publicar tu vibe, decide exactamente qué segundos de la canción quieres compartir. Desliza la barra de onda para seleccionar el inicio y el fin del fragmento — elige el estribillo, el drop o tu parte favorita.</p></div></div>
   <div class="item"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="3" stroke="#A78BFA" stroke-width="1.6" fill="none"/><path d="M10 8l6 4-6 4V8z" fill="#A78BFA"/></svg></div><div class="texto"><h4>Modo Swipe — el feed como TikTok</h4><p>Activa el modo Swipe y los vibes pasan a pantalla completa uno a uno. Desliza hacia arriba para avanzar, escucha el fragmento y reacciona sin distracciones. El audio arranca solo al cambiar de vibe.</p></div></div>
   <div class="item"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#A78BFA" stroke-width="1.6" fill="none"/><path d="M9.5 9a3 3 0 015 2.5c0 2-2.5 2.5-2.5 4" stroke="#A78BFA" stroke-width="1.6" fill="none" stroke-linecap="round"/><circle cx="12" cy="18" r="1" fill="#A78BFA"/></svg></div><div class="texto"><h4>Adivina la Canción</h4><p>Reta a tus amigos o a tu tribu: escuchan fragmentos cada vez más largos (3s, 7s, 15s, 30s) y tienen que adivinar la canción. Cuanto antes aciertas, más puntos ganas. Hay ranking semanal y bonus de velocidad.</p></div></div>
 </section>
@@ -126,140 +144,7 @@
     <svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#ffffff" stroke-width="1.8" fill="none"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3v1.5" stroke="#ffffff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="17.5" r="1.1" fill="#ffffff"/></svg>
     Ayuda por pantalla
   </h3>
-
-  <div class="pantalla">
-    <div class="pantalla-header" onclick="toggle(this)">
-      <svg width="22" height="22" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13M9 9l12-2M6 21a3 3 0 100-6 3 3 0 000 6zM18 19a3 3 0 100-6 3 3 0 000 6z" stroke="#A78BFA" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <h4>Pantalla Inicio</h4>
-      <span class="arrow">▼</span>
-    </div>
-    <div class="pantalla-body">
-      <p><strong>¿Qué encontrarás aquí?</strong> Tu vibe del día y el feed con las canciones de tus amigos y la comunidad.</p>
-      <ul>
-        <li>Publica la canción que estás escuchando ahora — solo una por franja del día.</li>
-        <li>El feed está bloqueado hasta que publicas. Primero tú, luego ves los demás.</li>
-        <li>Reacciona a los vibes de tus amigos: Temazo · Descubrimiento · Meh · No es lo mío · Guardar.</li>
-        <li>Comenta directamente en cualquier vibe del feed.</li>
-        <li>Usa el buscador para encontrar tu canción en Spotify o iTunes.</li>
-        <li>Escucha un preview de 30 segundos antes de publicar.</li>
-        <li>Elige el fragmento exacto que quieres compartir — desliza la barra de onda para seleccionar qué segundos escucharán los demás.</li>
-        <li>Debajo del feed de hoy verás los vibes de ayer y anteayer colapsados.</li>
-        <li>Los lunes aparece tu Resumen Semanal: top artista, días activos y racha de la semana.</li>
-        <li>Pulsa "Swipe" junto al feed para activar el modo pantalla completa estilo TikTok.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="pantalla">
-    <div class="pantalla-header" onclick="toggle(this)">
-      <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.5" fill="#A78BFA"/><line x1="12" y1="12" x2="12" y2="3" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round"/><line x1="12" y1="12" x2="20" y2="7" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round"/><line x1="12" y1="12" x2="21" y2="15" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round"/><line x1="12" y1="12" x2="5" y2="20" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round"/><line x1="12" y1="12" x2="3" y2="10" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="3" r="2" stroke="#A78BFA" stroke-width="1.8" fill="none"/><circle cx="20" cy="7" r="2" stroke="#A78BFA" stroke-width="1.8" fill="none"/><circle cx="21" cy="15" r="2" stroke="#A78BFA" stroke-width="1.8" fill="none"/><circle cx="5" cy="20" r="2" stroke="#A78BFA" stroke-width="1.8" fill="none"/><circle cx="3" cy="10" r="2" stroke="#A78BFA" stroke-width="1.8" fill="none"/></svg>
-      <h4>Pantalla Radar</h4>
-      <span class="arrow">▼</span>
-    </div>
-    <div class="pantalla-body">
-      <p><strong>¿Qué encontrarás aquí?</strong> Usuarios de MyVibe que están cerca de ti en este momento.</p>
-      <ul>
-        <li>Solo aparecen personas activas en los últimos 15 minutos.</li>
-        <li>La app calcula en silencio cuánto coincide tu música con la de cada persona cercana.</li>
-        <li>Si hay afinidad muy alta, la tarjeta se ilumina en rojo y el móvil vibra. Tócala para ver qué artistas tenéis en común.</li>
-        <li>Pulsa Amistad para enviarle una solicitud con mensaje.</li>
-        <li>Pulsa Duelo para retarle con una canción.</li>
-        <li>Pulsa el icono de radar para actualizar manualmente.</li>
-        <li>El radio máximo del Radar es de 50 km. Con VIBE PRO puedes extenderlo hasta 1000 km.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="pantalla">
-    <div class="pantalla-header" onclick="toggle(this)">
-      <svg width="26" height="20" viewBox="0 0 58 44" xmlns="http://www.w3.org/2000/svg">
-        <g transform="translate(10,0) scale(0.85)"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" stroke="#A78BFA" stroke-width="2.4" fill="none" stroke-linecap="round"/></g>
-        <g transform="translate(29,0) scale(0.85)"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" stroke="#A78BFA" stroke-width="2.4" fill="none" stroke-linecap="round"/></g>
-        <g transform="translate(0,21) scale(0.85)"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" stroke="#A78BFA" stroke-width="2.4" fill="none" stroke-linecap="round"/></g>
-        <g transform="translate(19,21) scale(0.85)"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" stroke="#A78BFA" stroke-width="2.4" fill="none" stroke-linecap="round"/></g>
-        <g transform="translate(38,21) scale(0.85)"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" stroke="#A78BFA" stroke-width="2.4" fill="none" stroke-linecap="round"/></g>
-      </svg>
-      <h4>Pantalla Tribu</h4>
-      <span class="arrow">▼</span>
-    </div>
-    <div class="pantalla-body">
-      <p><strong>¿Qué encontrarás aquí?</strong> Tus grupos musicales y tu lista de amigos con chat.</p>
-      <ul>
-        <li>Crea una Tribu pública (entra quien quiera) o privada (con código secreto).</li>
-        <li>Para invitar a alguien a tu tribu privada, comparte el código desde la tribu — puedes enviárselo directamente por chat y el destinatario podrá unirse con un botón.</li>
-        <li>Elige la categoría de tu tribu: General, Anime &amp; Manga, Gaming o Musicales.</li>
-        <li>Dentro de la tribu compartís canciones, comentáis y veis qué suena en el grupo.</li>
-        <li>Busca tribus públicas por nombre o filtra por categoría con los botones de la parte superior.</li>
-        <li>En la pestaña Amigos tienes el chat directo con cada amigo.</li>
-        <li>Desde Amigos también puedes retar a duelos directamente.</li>
-        <li>Si tienes mensajes nuevos verás un punto rojo en el avatar del amigo.</li>
-        <li>En la pestaña Adivina lanza un juego Adivina: un fragmento misterioso de canción para que los miembros descubran el título. Escuchan desde 3s hasta 30s — cuanto menos necesiten, más puntos ganan. Hay bonus por velocidad.</li>
-        <li>Compite en el ranking semanal de Adivina — se reinicia cada lunes.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="pantalla">
-    <div class="pantalla-header" onclick="toggle(this)">
-      <svg width="22" height="22" viewBox="0 0 24 24"><path d="M23 6l-9.5 9.5-5-5L1 18M17 6h6v6" stroke="#A78BFA" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <h4>Pantalla Trending</h4>
-      <span class="arrow">▼</span>
-    </div>
-    <div class="pantalla-body">
-      <p><strong>¿Qué encontrarás aquí?</strong> Las canciones que más están petando en MyVibe ahora mismo.</p>
-      <ul>
-        <li>Modo Global: canciones populares en toda la app.</li>
-        <li>Modo Local: solo canciones populares cerca de ti.</li>
-        <li>Explosiva = subió muchísimo en poco tiempo. Subiendo = va por buen camino. Nueva = acaba de entrar.</li>
-        <li>El Historial muestra cómo han evolucionado las canciones día a día.</li>
-        <li>Publicando tu vibe cada día puedes empujar canciones en el ranking.</li>
-        <li>Profecía Sonora (VIBE PRO): detecta canciones que van a explotar en tu zona antes de que lleguen al Trending.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="pantalla">
-    <div class="pantalla-header" onclick="toggle(this)">
-      <svg width="22" height="22" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" stroke="#A78BFA" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-      <h4>Pantalla ID (Perfil)</h4>
-      <span class="arrow">▼</span>
-    </div>
-    <div class="pantalla-body">
-      <p><strong>¿Qué encontrarás aquí?</strong> Tu identidad en MyVibe, tus logros y tus canciones guardadas.</p>
-      <ul>
-        <li>Personaliza tu avatar con la galería de avatares dark neon fotorrealistas exclusivos de VIBE PRO — más de 70 diseños en 12 géneros musicales.</li>
-        <li>Tus puntos suben publicando vibes (+5) y ganando duelos (+15). De Novato a Leyenda.</li>
-        <li>Mi Huella Sonora: tu resumen musical del año con top canciones, top artistas, mes más activo y racha máxima. Compártela con amigos dentro y fuera de MyVibe.</li>
-        <li>En Guardados → Canciones tienes todas las canciones que marcaste desde el feed.</li>
-        <li>En Guardados → Canciones de amigos encuentras las canciones que tus amigos te han enviado directamente.</li>
-        <li>En Guardados → Huellas amigos puedes ver y expandir las Huellas Sonoras que tus amigos han compartido contigo.</li>
-        <li>En Guardados → Colecciones organiza tus canciones guardadas en listas propias con nombre y portada.</li>
-        <li>Comparte tu perfil enseñando tu código QR, o pulsa Escanear QR para añadir a alguien al instante.</li>
-        <li>Elige tu plataforma musical favorita en Ajustes — todos los enlaces de canciones se abrirán en ella.</li>
-        <li>En Ajustes también activas o silencias las notificaciones y gestionas las canciones que has ocultado del feed.</li>
-        <li>En Ajustes tienes accesos directos a Shazam, SoundHound, Google Sound y Musixmatch, para identificar una canción que suena a tu alrededor y luego publicarla en MyVibe.</li>
-        <li>DNA Musical (PRO): tarjeta vertical exportable tipo Wrapped con toda tu identidad musical del año.</li>
-        <li>Carta Musical PRO: tarjeta de presentación exportable con tu rango, top artistas y estilo musical.</li>
-        <li>Desde aquí también accedes a tus Tribus y a tus Duelos activos.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="pantalla">
-    <div class="pantalla-header" onclick="toggle(this)">
-      <svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="#FFD700" stroke-width="1.6" fill="none" stroke-linejoin="round"/></svg>
-      <h4>VIBE PRO</h4>
-      <span class="arrow">▼</span>
-    </div>
-    <div class="pantalla-body">
-      <p><strong>¿Qué es?</strong> El nivel superior de MyVibe. Desbloquea funciones extra en todas las pantallas: radar hasta 1000 km, avatares dark neon exclusivos, marco dorado en tu perfil, cápsulas permanentes, categorías de tribu, Profecía Sonora, protector de racha, DNA Musical y Carta de Presentación.</p>
-      <ul>
-        <li>Se accede desde Ajustes, o directamente al tocar cualquier función bloqueada — se ve difuminada con un candado o la palabra PRO encima.</li>
-        <li>De momento no está a la venta. Pulsa "Avísame cuando esté disponible" y serás de los primeros en poder activarlo en cuanto se abra la compra.</li>
-      </ul>
-    </div>
-  </div>
-
+  <div id="pantallas"></div>
 </section>
 
 <section>
@@ -308,8 +193,10 @@
 
 <script>
   function toggle(header) {
+    const pantalla = header.parentElement;
     const body = header.nextElementSibling;
     const arrow = header.querySelector('.arrow');
+    pantalla.classList.toggle('abierto');
     body.classList.toggle('abierto');
     arrow.textContent = body.classList.contains('abierto') ? '▲' : '▼';
   }
@@ -337,6 +224,249 @@
     document.getElementById('opinion').value = '';
   }
 
+  // ============ ICONOS DE FICHAS (reutilizables, 24x24, currentColor) ============
+  const ICON_DEFS = {
+    note: '<path d="M9 18V5l12-2v13M9 9l12-2M6 21a3 3 0 100-6 3 3 0 000 6zM18 19a3 3 0 100-6 3 3 0 000 6z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+    lock: '<rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="2" fill="none"/><path d="M8 11V7a4 4 0 018 0v4" stroke="currentColor" stroke-width="2" fill="none"/>',
+    heart: '<path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/>',
+    chat: '<path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/>',
+    chatDot: '<path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linejoin="round"/><circle cx="17.5" cy="5.5" r="3" fill="#FF6B6B"/>',
+    search: '<circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+    play: '<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M10 8l6 4-6 4V8z" fill="currentColor"/>',
+    waveform: '<rect x="1" y="14" width="2" height="6" rx="1" fill="currentColor"/><rect x="4" y="10" width="2" height="10" rx="1" fill="currentColor"/><rect x="7" y="6" width="2" height="14" rx="1" fill="currentColor"/><rect x="10" y="4" width="2" height="16" rx="1" fill="currentColor"/><rect x="13" y="6" width="2" height="14" rx="1" fill="currentColor"/><rect x="16" y="10" width="2" height="10" rx="1" fill="currentColor"/><rect x="19" y="13" width="2" height="7" rx="1" fill="currentColor"/>',
+    collapse: '<path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+    star: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/>',
+    swipe: '<rect x="2" y="3" width="20" height="18" rx="3" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M10 8l6 4-6 4V8z" fill="currentColor"/>',
+    pulse: '<path d="M12 2a10 10 0 100 20 10 10 0 000-20z" stroke="currentColor" stroke-width="1.8" fill="none"/><circle cx="12" cy="12" r="4" fill="currentColor"/>',
+    venn: '<circle cx="9" cy="12" r="7" stroke="currentColor" stroke-width="1.8" fill="none"/><circle cx="15" cy="12" r="7" stroke="currentColor" stroke-width="1.8" fill="none"/>',
+    friendAdd: '<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>',
+    sword: '<path d="M14.5 17.5L3 6V3h3l11.5 11.5M13 19l6-6M16 16l4 4M19 21l2-2" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+    refresh: '<path d="M21 12a9 9 0 11-3-6.7M21 3v5h-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+    clock: '<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
+    globe: '<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20" stroke="currentColor" stroke-width="1.4" fill="none"/>',
+    house: '<path d="M3 11l9-7 9 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v9a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1v-9" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/>',
+    key: '<circle cx="8" cy="15" r="4" stroke="currentColor" stroke-width="2" fill="none"/><path d="M11 12l9-9M17 6l2 2M14 9l2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+    tag: '<path d="M20 12L12 20l-9-9V4h7l9 9z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/><circle cx="7.5" cy="7.5" r="1.2" fill="currentColor"/>',
+    wall: '<rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M3 9h18M9 9v11" stroke="currentColor" stroke-width="1.8"/>',
+    mic: '<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M9.5 9a3 3 0 015 2.5c0 2-2.5 2.5-2.5 4" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/><circle cx="12" cy="18" r="1" fill="currentColor"/>',
+    bolt: '<path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/>',
+    trophy: '<path d="M8 4h8v4a4 4 0 01-8 0V4z" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M8 5H5a3 3 0 003 3M16 5h3a3 3 0 01-3 3" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M10 12v3M14 12v3M8 19h8M12 15v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
+    trendArrow: '<path d="M23 6l-9.5 9.5-5-5L1 18M17 6h6v6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+    pin: '<path d="M12 22s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6" fill="none"/>',
+    rocket: '<path d="M12 2c3 2 5 6 5 10 0 2-1 4-2 5l-3 3-3-3c-1-1-2-3-2-5 0-4 2-8 5-10z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/><circle cx="12" cy="10" r="1.6" fill="currentColor"/>',
+    prophecy: '<path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z" stroke="currentColor" stroke-width="1.8" fill="none"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8" fill="none"/>',
+    rankup: '<path d="M12 4l7 7M12 4l-7 7M12 13l7 7M12 13l-7 7" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+    footprint: '<path d="M12 22s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6" fill="none"/>',
+    qr: '<rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.8" fill="none"/><rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.8" fill="none"/><rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.8" fill="none"/><rect x="14" y="14" width="3" height="3" fill="currentColor"/><rect x="18" y="14" width="3" height="3" fill="currentColor"/><rect x="14" y="18" width="3" height="3" fill="currentColor"/><rect x="18" y="18" width="3" height="3" fill="currentColor"/>',
+    link: '<path d="M9 15l6-6M8 12l-2 2a4 4 0 105.5 5.5l2-2M16 12l2-2a4 4 0 10-5.5-5.5l-2 2" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/>',
+    dna: '<path d="M6 3c0 6 12 6 12 12M18 21c0-6-12-6-12-12" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M7.5 6h9M7.5 18h9M6.8 9h10.4M6.8 15h10.4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>',
+    card: '<rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M3 9h18" stroke="currentColor" stroke-width="1.8"/><path d="M6 13h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',
+    arrowRight: '<path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+    bell: '<path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 01-3.4 0" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/>',
+    eyeOff: '<path d="M3 3l18 18M10.6 10.6a2.5 2.5 0 003.5 3.5M9.4 5.5A10 10 0 0121 12s-1.1 2-3.2 3.7M6.5 6.7C4.4 8.2 3 12 3 12s3.5 6 9 6c1 0 1.9-.2 2.7-.5" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+    idsong: '<path d="M12 3a9 9 0 00-9 9c0 3 1 5 3 6M12 3a9 9 0 019 9c0 5-3 8-6 8-2 0-3-1-3-3v-4a3 3 0 116 0" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>',
+    lock2: '<rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="2" fill="none"/><path d="M8 11V7a4 4 0 018 0v4" stroke="currentColor" stroke-width="2" fill="none"/>',
+    gift: '<rect x="3" y="8" width="18" height="13" rx="1" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M3 8h18M12 8v13" stroke="currentColor" stroke-width="1.8"/><path d="M12 8c-2-4-7-4-7-1s4 1 7 1zm0 0c2-4 7-4 7-1s-4 1-7 1z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linejoin="round"/>'
+  };
+  function I(name, color, size) {
+    size = size || 14;
+    return `<svg width="${size}" height="${size}" viewBox="0 0 24 24">${(ICON_DEFS[name] || '').split('currentColor').join(color)}</svg>`;
+  }
+  const HEADER_ICONS = {
+    inicio: '<svg width="19" height="19" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13M9 9l12-2M6 21a3 3 0 100-6 3 3 0 000 6zM18 19a3 3 0 100-6 3 3 0 000 6z" stroke="#A78BFA" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    radar: '<svg width="19" height="19" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2" fill="#A78BFA"/><line x1="12" y1="12" x2="12" y2="3" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round"/><line x1="12" y1="12" x2="20" y2="7" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round"/><line x1="12" y1="12" x2="21" y2="15" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round"/><line x1="12" y1="12" x2="5" y2="20" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round"/><line x1="12" y1="12" x2="3" y2="10" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round"/></svg>',
+    tribu: '<svg width="20" height="16" viewBox="0 0 58 44"><g transform="translate(10,0) scale(0.85)"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" stroke="#A78BFA" stroke-width="2.4" fill="none" stroke-linecap="round"/></g><g transform="translate(29,0) scale(0.85)"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" stroke="#A78BFA" stroke-width="2.4" fill="none" stroke-linecap="round"/></g><g transform="translate(0,21) scale(0.85)"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" stroke="#A78BFA" stroke-width="2.4" fill="none" stroke-linecap="round"/></g><g transform="translate(19,21) scale(0.85)"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" stroke="#A78BFA" stroke-width="2.4" fill="none" stroke-linecap="round"/></g><g transform="translate(38,21) scale(0.85)"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" stroke="#A78BFA" stroke-width="2.4" fill="none" stroke-linecap="round"/></g></svg>',
+    trending: '<svg width="19" height="19" viewBox="0 0 24 24"><path d="M23 6l-9.5 9.5-5-5L1 18M17 6h6v6" stroke="#A78BFA" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    id: '<svg width="19" height="19" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" stroke="#A78BFA" stroke-width="2" fill="none" stroke-linecap="round"/></svg>',
+    pro: '<svg width="19" height="19" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="#FFD700" stroke-width="1.6" fill="none" stroke-linejoin="round"/></svg>'
+  };
+
+  // ============ CONTENIDO DE LAS PANTALLAS (ES / EN) ============
+  const PANTALLAS = {
+    es: [
+      { key: 'inicio', titulo: 'Pantalla Inicio', intro: '¿Qué encontrarás aquí? Tu vibe del día y el feed con las canciones de tus amigos y la comunidad.', grupos: [ { tiles: [
+        { icon:'note', h:'Publica tu vibe', p:'La canción que suena ahora. Solo una vez por franja del día.' },
+        { icon:'lock', h:'Feed bloqueado', p:'No ves al resto hasta que publicas tú primero.' },
+        { icon:'heart', h:'Reacciona', p:'Temazo · Descubrimiento · Meh · No es lo mío · Guardar.' },
+        { icon:'chat', h:'Comenta', p:'Directamente en cualquier vibe del feed.' },
+        { icon:'search', h:'Busca tu canción', p:'En Spotify o iTunes, desde el propio buscador.' },
+        { icon:'play', h:'Escucha antes de publicar', p:'Preview de 30 segundos.' },
+        { icon:'waveform', h:'Elige el fragmento exacto', p:'Desliza la barra de onda: el estribillo, el drop o tu parte favorita.', full:true },
+        { icon:'collapse', h:'Vibes anteriores', p:'Debajo del feed de hoy, los de ayer y anteayer, colapsados.' },
+        { icon:'star', accent:'gold', h:'Resumen Semanal', p:'Cada lunes: top artista, días activos y tu racha.' },
+        { icon:'swipe', h:'Modo Swipe', p:'Pantalla completa estilo TikTok, un vibe detrás de otro.' }
+      ] } ] },
+      { key: 'radar', titulo: 'Pantalla Radar', intro: '¿Qué encontrarás aquí? Usuarios de MyVibe que están cerca de ti en este momento.', grupos: [ { tiles: [
+        { icon:'pulse', accent:'red', h:'Flechazo musical', p:'Afinidad muy alta = tarjeta roja + vibración. Toca para ver qué compartís.' },
+        { icon:'venn', h:'Cómo se calcula', p:'La app compara en silencio tu música con la de cada persona cercana.' },
+        { icon:'friendAdd', h:'Enviar amistad', p:'Solicitud con mensaje, directo desde su tarjeta.' },
+        { icon:'sword', h:'Retar a Duelo', p:'Tu canción contra la suya, desde el propio Radar.' },
+        { icon:'refresh', h:'Actualizar', p:'Pulsa el icono de radar para buscar de nuevo.' },
+        { icon:'clock', h:'Ventana de 15 min', p:'Solo ves a quien está activo ahora mismo.' },
+        { icon:'globe', accent:'gold', h:'Radio ampliado — VIBE PRO', p:'50 km gratis. Con PRO, hasta 1000 km.', stat:'50km → 1000km', full:true }
+      ] } ] },
+      { key: 'tribu', titulo: 'Pantalla Tribu', intro: '¿Qué encontrarás aquí? Tus grupos musicales, tu lista de amigos con chat y el juego Adivina.', grupos: [
+        { nombre:'Tribus', tiles: [
+          { icon:'house', h:'Crea tu tribu', p:'Pública (entra quien quiera) o privada (código secreto).' },
+          { icon:'key', h:'Invita por código', p:'Compártelo desde la tribu o mándalo por chat; se unen con un botón.' },
+          { icon:'tag', h:'Elige categoría', p:'General, Anime & Manga, Gaming o Musicales.' },
+          { icon:'wall', h:'El muro de la tribu', p:'Compartís canciones, comentáis y veis qué suena en el grupo.' },
+          { icon:'search', h:'Busca tribus públicas', p:'Por nombre, o filtrando por categoría.' }
+        ] },
+        { nombre:'Amigos', tiles: [
+          { icon:'chat', h:'Chat directo', p:'Con cada amigo, uno a uno.' },
+          { icon:'chatDot', h:'Aviso de mensajes', p:'Punto rojo en su avatar si hay algo nuevo.' },
+          { icon:'sword', h:'Retar desde aquí', p:'Duelo o Adivina, directo desde la ficha del amigo.' }
+        ] },
+        { nombre:'Adivina', tiles: [
+          { icon:'mic', h:'Lanza un fragmento', p:'De 3s a 30s. Cuanto menos necesiten para acertar, más puntos ganan.' },
+          { icon:'bolt', h:'Bonus de velocidad', p:'Responder rápido suma puntos extra.' },
+          { icon:'trophy', h:'Ranking semanal', p:'Se reinicia cada lunes.' }
+        ] }
+      ] },
+      { key: 'trending', titulo: 'Pantalla Trending', intro: '¿Qué encontrarás aquí? Las canciones que más están petando en MyVibe ahora mismo.', grupos: [ { tiles: [
+        { icon:'globe', h:'Modo Global', p:'Canciones populares en toda la app.' },
+        { icon:'pin', h:'Modo Local', p:'Solo lo que está petando cerca de ti.' },
+        { icon:'trendArrow', h:'Explosiva · Subiendo · Nueva', p:'Subió muchísimo y rápido / va por buen camino / acaba de entrar.' },
+        { icon:'clock', h:'Historial', p:'Cómo han evolucionado las canciones día a día.' },
+        { icon:'rocket', h:'Empuja el ranking', p:'Publicar tu vibe cada día ayuda a subir canciones.' },
+        { icon:'prophecy', accent:'gold', h:'Profecía Sonora — VIBE PRO', p:'Detecta lo que va a explotar en tu zona antes que el propio Trending.', full:true }
+      ] } ] },
+      { key: 'id', titulo: 'Pantalla ID (Perfil)', intro: '¿Qué encontrarás aquí? Tu identidad en MyVibe, tus logros y tus canciones guardadas.', grupos: [
+        { nombre:'Perfil', tiles: [
+          { icon:'star', accent:'gold', h:'Avatares VIBE PRO', p:'Galería dark neon fotorrealista: +70 diseños en 12 géneros.' },
+          { icon:'rankup', h:'Sube de rango', p:'+5 por publicar, +15 por ganar un duelo. De Novato a Leyenda.' },
+          { icon:'footprint', h:'Mi Huella Sonora', p:'Resumen del año: top canciones, top artistas, mes más activo y racha máxima. Se comparte.' },
+          { icon:'qr', h:'Comparte o escanea QR', p:'Enseña tu código, o escanea el de otro para añadirlo al instante.' },
+          { icon:'link', h:'Plataforma favorita', p:'Elige dónde se abren los enlaces de canciones — se ajusta en Ajustes.' },
+          { icon:'dna', accent:'gold', h:'DNA Musical — PRO', p:'Tarjeta vertical tipo Wrapped con tu identidad musical del año.' },
+          { icon:'card', accent:'gold', h:'Carta Musical — PRO', p:'Tarjeta de presentación con tu rango, top artistas y estilo.' },
+          { icon:'arrowRight', h:'Tribus y Duelos', p:'Accede a ambos directamente desde aquí.' }
+        ] },
+        { nombre:'Guardados', tiles: [
+          { icon:'note', h:'Canciones', p:'Todo lo que has guardado desde el feed.' },
+          { icon:'friendAdd', h:'De tus amigos', p:'Canciones que te han enviado directamente.' },
+          { icon:'footprint', h:'Huellas de amigos', p:'Ve y expande las Huellas Sonoras que te han compartido.' },
+          { icon:'card', h:'Colecciones', p:'Crea tus propias listas con nombre y portada.' }
+        ] },
+        { nombre:'Ajustes', tiles: [
+          { icon:'bell', h:'Notificaciones', p:'Actívalas o siléncialas cuando quieras.' },
+          { icon:'eyeOff', h:'Canciones ocultas', p:'Gestiona lo que has quitado de tu feed.' },
+          { icon:'idsong', h:'Identificar canciones', p:'Accesos directos a Shazam, SoundHound, Google Sound y Musixmatch.' },
+          { icon:'star', accent:'gold', h:'VIBE PRO y legal', p:'Accede a la suscripción y a Términos/Privacidad.' }
+        ] }
+      ] },
+      { key: 'pro', titulo: 'VIBE PRO', intro: '¿Qué es? El nivel superior de MyVibe. Desbloquea radar hasta 1000 km, avatares dark neon exclusivos, marco dorado, cápsulas permanentes, categorías de tribu, Profecía Sonora, protector de racha, DNA Musical y Carta de Presentación.', grupos: [ { tiles: [
+        { icon:'lock2', h:'Cómo se activa', p:'Toca cualquier función bloqueada (candado + PRO), o entra desde Ajustes.' },
+        { icon:'gift', accent:'gold', h:'Aún no a la venta', p:'Pulsa "Avísame cuando esté disponible" y serás de los primeros en activarlo.', full:true }
+      ] } ] }
+    ],
+    en: [
+      { key: 'inicio', titulo: 'Home Screen', intro: 'What will you find here? Your vibe of the day and the feed with songs from your friends and the community.', grupos: [ { tiles: [
+        { icon:'note', h:'Post your vibe', p:'The song playing right now. Only once per time slot per day.' },
+        { icon:'lock', h:'Feed locked', p:"You don't see the rest until you post first." },
+        { icon:'heart', h:'React', p:'Banger · Discovery · Meh · Not my thing · Save.' },
+        { icon:'chat', h:'Comment', p:'Directly on any vibe in the feed.' },
+        { icon:'search', h:'Search your song', p:'On Spotify or iTunes, from the built-in search bar.' },
+        { icon:'play', h:'Listen before posting', p:'30-second preview.' },
+        { icon:'waveform', h:'Pick the exact fragment', p:'Slide the waveform bar: the chorus, the drop, or your favourite part.', full:true },
+        { icon:'collapse', h:'Earlier vibes', p:"Below today's feed, yesterday's and the day before's, collapsed." },
+        { icon:'star', accent:'gold', h:'Weekly Summary', p:'Every Monday: top artist, active days and your streak.' },
+        { icon:'swipe', h:'Swipe Mode', p:'Full-screen, TikTok-style, one vibe after another.' }
+      ] } ] },
+      { key: 'radar', titulo: 'Radar Screen', intro: 'What will you find here? MyVibe users who are near you right now.', grupos: [ { tiles: [
+        { icon:'pulse', accent:'red', h:'Musical spark', p:'Very high match = red card + vibration. Tap it to see what you share.' },
+        { icon:'venn', h:'How it works', p:'The app quietly compares your music with each nearby person\'s.' },
+        { icon:'friendAdd', h:'Send friendship', p:'A request with a message, right from their card.' },
+        { icon:'sword', h:'Challenge to Battle', p:'Your song vs theirs, straight from the Radar.' },
+        { icon:'refresh', h:'Refresh', p:'Tap the radar icon to search again.' },
+        { icon:'clock', h:'15-minute window', p:'You only see people active right now.' },
+        { icon:'globe', accent:'gold', h:'Extended range — VIBE PRO', p:'50 km free. Up to 1000 km with PRO.', stat:'50km → 1000km', full:true }
+      ] } ] },
+      { key: 'tribu', titulo: 'Tribe Screen', intro: 'What will you find here? Your music groups, your friends list with chat, and the Adivina game.', grupos: [
+        { nombre:'Tribes', tiles: [
+          { icon:'house', h:'Create your tribe', p:'Public (anyone can join) or private (secret code).' },
+          { icon:'key', h:'Invite by code', p:'Share it from the tribe or send it via chat; they join with one tap.' },
+          { icon:'tag', h:'Pick a category', p:'General, Anime & Manga, Gaming or Musicals.' },
+          { icon:'wall', h:"The tribe's wall", p:"Share songs, comment, and see what's playing in the group." },
+          { icon:'search', h:'Search public tribes', p:'By name, or filter by category.' }
+        ] },
+        { nombre:'Friends', tiles: [
+          { icon:'chat', h:'Direct chat', p:'With each friend, one on one.' },
+          { icon:'chatDot', h:'New message alert', p:'A red dot on their avatar when there\'s something new.' },
+          { icon:'sword', h:'Challenge from here', p:'Battle or Adivina, right from the friend\'s card.' }
+        ] },
+        { nombre:'Adivina', tiles: [
+          { icon:'mic', h:'Launch a fragment', p:'From 3s to 30s. The less they need to guess right, the more points they earn.' },
+          { icon:'bolt', h:'Speed bonus', p:'Answering fast earns extra points.' },
+          { icon:'trophy', h:'Weekly ranking', p:'Resets every Monday.' }
+        ] }
+      ] },
+      { key: 'trending', titulo: 'Trending Screen', intro: "What will you find here? The songs that are blowing up on MyVibe right now.", grupos: [ { tiles: [
+        { icon:'globe', h:'Global mode', p:'Popular songs across the whole app.' },
+        { icon:'pin', h:'Local mode', p:"Only what's blowing up near you." },
+        { icon:'trendArrow', h:'Explosive · Rising · New', p:'Rose a lot and fast / on a good path / just entered.' },
+        { icon:'clock', h:'History', p:'How songs have evolved day by day.' },
+        { icon:'rocket', h:'Push the ranking', p:'Posting your vibe every day helps push songs up.' },
+        { icon:'prophecy', accent:'gold', h:'Sonic Prophecy — VIBE PRO', p:"Detects what's about to explode in your area before Trending does.", full:true }
+      ] } ] },
+      { key: 'id', titulo: 'ID Screen (Profile)', intro: 'What will you find here? Your MyVibe identity, your achievements and your saved songs.', grupos: [
+        { nombre:'Profile', tiles: [
+          { icon:'star', accent:'gold', h:'VIBE PRO avatars', p:'Dark neon photorealistic gallery: 70+ designs across 12 genres.' },
+          { icon:'rankup', h:'Level up', p:'+5 for posting, +15 for winning a battle. From Rookie to Legend.' },
+          { icon:'footprint', h:'My Sound Footprint', p:'Your year in review: top songs, top artists, most active month and longest streak. Shareable.' },
+          { icon:'qr', h:'Share or scan QR', p:'Show your code, or scan someone else\'s to add them instantly.' },
+          { icon:'link', h:'Favorite platform', p:'Choose where song links open — set it in Settings.' },
+          { icon:'dna', accent:'gold', h:'Musical DNA — PRO', p:'Wrapped-style vertical card with your musical identity for the year.' },
+          { icon:'card', accent:'gold', h:'Musical Card — PRO', p:'Presentation card with your rank, top artists and style.' },
+          { icon:'arrowRight', h:'Tribes and Battles', p:'Access both directly from here.' }
+        ] },
+        { nombre:'Saved', tiles: [
+          { icon:'note', h:'Songs', p:"Everything you've saved from the feed." },
+          { icon:'friendAdd', h:"From friends", p:"Songs your friends have sent you directly." },
+          { icon:'footprint', h:"Friends' Footprints", p:"View and expand the Sound Footprints shared with you." },
+          { icon:'card', h:'Collections', p:'Build your own named lists with a cover image.' }
+        ] },
+        { nombre:'Settings', tiles: [
+          { icon:'bell', h:'Notifications', p:'Turn them on or off whenever you like.' },
+          { icon:'eyeOff', h:'Hidden songs', p:"Manage what you've removed from your feed." },
+          { icon:'idsong', h:'Identify songs', p:'Quick links to Shazam, SoundHound, Google Sound and Musixmatch.' },
+          { icon:'star', accent:'gold', h:'VIBE PRO & legal', p:'Access the subscription and Terms/Privacy.' }
+        ] }
+      ] },
+      { key: 'pro', titulo: 'VIBE PRO', intro: "What is it? MyVibe's top tier. Unlocks radar up to 1000 km, exclusive dark neon avatars, golden frame, permanent capsules, tribe categories, Sonic Prophecy, streak shield, Musical DNA and Presentation Card.", grupos: [ { tiles: [
+        { icon:'lock2', h:'How to activate it', p:'Tap any locked feature (lock + PRO), or open it from Settings.' },
+        { icon:'gift', accent:'gold', h:'Not for sale yet', p:'Tap "Notify me when available" and be among the first to activate it.', full:true }
+      ] } ] }
+    ]
+  };
+
+  function renderPantallas(lang) {
+    const cont = document.getElementById('pantallas');
+    cont.innerHTML = PANTALLAS[lang].map(function(p) {
+      const gruposHtml = p.grupos.map(function(g) {
+        const tilesHtml = g.tiles.map(function(til) {
+          const color = til.accent === 'gold' ? '#FFD700' : (til.accent === 'red' ? '#FF6B6B' : '#A78BFA');
+          return '<div class="tile' + (til.full ? ' full' : '') + (til.accent ? ' accent-' + til.accent : '') + '">' +
+            '<div class="row1"><div class="ticon">' + I(til.icon, color, 14) + '</div><h5>' + til.h + '</h5></div>' +
+            '<p>' + til.p + '</p>' +
+            (til.stat ? '<span class="stat">' + til.stat + '</span>' : '') +
+            '</div>';
+        }).join('');
+        return (g.nombre ? '<div class="grupo-titulo">' + g.nombre + '</div>' : '') + '<div class="tiles">' + tilesHtml + '</div>';
+      }).join('');
+      return '<div class="pantalla">' +
+        '<div class="pantalla-header" onclick="toggle(this)">' +
+          '<div class="p-ico" style="background:' + (p.key === 'pro' ? 'rgba(255,215,0,.14)' : 'rgba(167,139,250,.14)') + '">' + HEADER_ICONS[p.key] + '</div>' +
+          '<h4>' + p.titulo + '</h4><span class="arrow">▼</span>' +
+        '</div>' +
+        '<div class="pantalla-body"><div class="p-intro"><strong>' + p.intro + '</strong></div>' + gruposHtml + '</div>' +
+      '</div>';
+    }).join('');
+  }
+  renderPantallas('es');
+
+  // ============ RESTO DEL CONTENIDO BILINGÜE (cabecera, hero, reseñas, formulario) ============
   let currentLang = 'es';
 
   const TEXTOS = {
@@ -358,19 +488,11 @@
         { h: 'Adivina la Canción', p: 'Reta a tus amigos o a tu tribu: escuchan fragmentos cada vez más largos (3s, 7s, 15s, 30s) y tienen que adivinar la canción. Cuanto antes aciertas, más puntos ganas. Hay ranking semanal y bonus de velocidad.' }
       ],
       ayuda: 'Ayuda por pantalla',
-      pantallas: [
-        { titulo: 'Pantalla Inicio', intro: '¿Qué encontrarás aquí? Tu vibe del día y el feed con las canciones de tus amigos y la comunidad.', items: ['Publica la canción que estás escuchando ahora — solo una por franja del día.','El feed está bloqueado hasta que publicas. Primero tú, luego ves los demás.','Reacciona a los vibes de tus amigos: Temazo · Descubrimiento · Meh · No es lo mío · Guardar.','Comenta directamente en cualquier vibe del feed.','Usa el buscador para encontrar tu canción en Spotify o iTunes.','Escucha un preview de 30 segundos antes de publicar.','Elige el fragmento exacto que quieres compartir — desliza la barra de onda para seleccionar qué segundos escucharán los demás.','Debajo del feed de hoy verás los vibes de ayer y anteayer colapsados.','Los lunes aparece tu Resumen Semanal: top artista, días activos y racha de la semana.','Pulsa "Swipe" junto al feed para activar el modo pantalla completa estilo TikTok.'] },
-        { titulo: 'Pantalla Radar', intro: '¿Qué encontrarás aquí? Usuarios de MyVibe que están cerca de ti en este momento.', items: ['Solo aparecen personas activas en los últimos 15 minutos.','La app calcula en silencio cuánto coincide tu música con la de cada persona cercana.','Si hay afinidad muy alta, la tarjeta se ilumina en rojo y el móvil vibra. Tócala para ver qué artistas tenéis en común.','Pulsa Amistad para enviarle una solicitud con mensaje.','Pulsa Duelo para retarle con una canción.','Pulsa el icono de radar para actualizar manualmente.','El radio máximo del Radar es de 50 km. Con VIBE PRO puedes extenderlo hasta 1000 km.'] },
-        { titulo: 'Pantalla Tribu', intro: '¿Qué encontrarás aquí? Tus grupos musicales y tu lista de amigos con chat.', items: ['Crea una Tribu pública (entra quien quiera) o privada (con código secreto).','Para invitar a alguien a tu tribu privada, comparte el código desde la tribu — puedes enviárselo directamente por chat y el destinatario podrá unirse con un botón.','Elige la categoría de tu tribu: General, Anime & Manga, Gaming o Musicales.','Dentro de la tribu compartís canciones, comentáis y veis qué suena en el grupo.','Busca tribus públicas por nombre o filtra por categoría con los botones de la parte superior.','En la pestaña Amigos tienes el chat directo con cada amigo.','Desde Amigos también puedes retar a duelos directamente.','Si tienes mensajes nuevos verás un punto rojo en el avatar del amigo.','En la pestaña Adivina lanza un juego Adivina: un fragmento misterioso de canción para que los miembros descubran el título. Escuchan desde 3s hasta 30s — cuanto menos necesiten, más puntos ganan. Hay bonus por velocidad.','Compite en el ranking semanal de Adivina — se reinicia cada lunes.'] },
-        { titulo: 'Pantalla Trending', intro: '¿Qué encontrarás aquí? Las canciones que más están petando en MyVibe ahora mismo.', items: ['Modo Global: canciones populares en toda la app.','Modo Local: solo canciones populares cerca de ti.','Explosiva = subió muchísimo en poco tiempo. Subiendo = va por buen camino. Nueva = acaba de entrar.','El Historial muestra cómo han evolucionado las canciones día a día.','Publicando tu vibe cada día puedes empujar canciones en el ranking.','Profecía Sonora (VIBE PRO): detecta canciones que van a explotar en tu zona antes de que lleguen al Trending.'] },
-        { titulo: 'Pantalla ID (Perfil)', intro: '¿Qué encontrarás aquí? Tu identidad en MyVibe, tus logros y tus canciones guardadas.', items: ['Personaliza tu avatar con la galería de avatares dark neon fotorrealistas exclusivos de VIBE PRO — más de 70 diseños en 12 géneros musicales.','Tus puntos suben publicando vibes (+5) y ganando duelos (+15). De Novato a Leyenda.','Mi Huella Sonora: tu resumen musical del año con top canciones, top artistas, mes más activo y racha máxima. Compártela con amigos dentro y fuera de MyVibe.','En Guardados → Canciones tienes todas las canciones que marcaste desde el feed.','En Guardados → Canciones de amigos encuentras las canciones que tus amigos te han enviado directamente.','En Guardados → Huellas amigos puedes ver y expandir las Huellas Sonoras que tus amigos han compartido contigo.','En Guardados → Colecciones organiza tus canciones guardadas en listas propias con nombre y portada.','Comparte tu perfil enseñando tu código QR, o pulsa Escanear QR para añadir a alguien al instante.','Elige tu plataforma musical favorita en Ajustes — todos los enlaces de canciones se abrirán en ella.','En Ajustes también activas o silencias las notificaciones y gestionas las canciones que has ocultado del feed.','En Ajustes tienes accesos directos a Shazam, SoundHound, Google Sound y Musixmatch, para identificar una canción que suena a tu alrededor y luego publicarla en MyVibe.','DNA Musical (PRO): tarjeta vertical exportable tipo Wrapped con toda tu identidad musical del año.','Carta Musical PRO: tarjeta de presentación exportable con tu rango, top artistas y estilo musical.','Desde aquí también accedes a tus Tribus y a tus Duelos activos.'] },
-        { titulo: 'VIBE PRO', intro: '¿Qué es? El nivel superior de MyVibe. Desbloquea funciones extra en todas las pantallas: radar hasta 1000 km, avatares dark neon exclusivos, marco dorado en tu perfil, cápsulas permanentes, categorías de tribu, Profecía Sonora, protector de racha, DNA Musical y Carta de Presentación.', items: ['Se accede desde Ajustes, o directamente al tocar cualquier función bloqueada — se ve difuminada con un candado o la palabra PRO encima.','De momento no está a la venta. Pulsa "Avísame cuando esté disponible" y serás de los primeros en poder activarlo en cuanto se abra la compra.'] }
-      ],
       resenas_titulo: 'Lo que dicen los usuarios',
       resenas: [
-        { nick: '@musiclover22', stars: '★★★★★', texto: '"Me encanta el Radar — he conocido gente con mis mismos gustos musicales que vive a dos calles de mí. Una pasada."' },
-        { nick: 'Andrea R.', stars: '★★★★☆', texto: '"Los duelos son adictivos, llevo semanas retando a mis amigos. Le pondría más canciones favoritas guardadas pero por lo demás genial."' },
-        { nick: '@vinilo_dj', stars: '★★★★★', texto: '"El Trending es lo que más uso, descubro canciones que están a punto de explotar antes que nadie."' }
+        { texto: '"Me encanta el Radar — he conocido gente con mis mismos gustos musicales que vive a dos calles de mí. Una pasada."' },
+        { texto: '"Los duelos son adictivos, llevo semanas retando a mis amigos. Le pondría más canciones favoritas guardadas pero por lo demás genial."' },
+        { texto: '"El Trending es lo que más uso, descubro canciones que están a punto de explotar antes que nadie."' }
       ],
       opinion_titulo: 'Cuéntanos qué piensas',
       opinion_sub: 'Tu opinión ayuda a mejorar MyVibe. Solo tarda 1 minuto.',
@@ -399,19 +521,11 @@
         { h: 'Guess the Song', p: 'Challenge your friends or tribe: they listen to increasingly longer fragments (3s, 7s, 15s, 30s) and have to guess the song. The sooner you get it right, the more points you earn. Weekly ranking and speed bonus included.' }
       ],
       ayuda: 'Help by screen',
-      pantallas: [
-        { titulo: 'Home Screen', intro: "What will you find here? Your vibe of the day and the feed with songs from your friends and the community.", items: ["Post the song you're listening to right now — only one per time slot per day.","The feed is locked until you post. First you, then you see the rest.","React to your friends' vibes: Banger · Discovery · Meh · Not my thing · Save.","Comment directly on any vibe in the feed.","Use the search bar to find your song on Spotify or iTunes.","Listen to a 30-second preview before posting.","Choose the exact fragment you want to share — slide the waveform bar to select which seconds others will hear.","Below today's feed you'll see yesterday's and the day before's vibes, collapsed.","Every Monday your Weekly Summary appears: top artist, active days and your streak for the week.","Hit 'Swipe' next to the feed to activate full-screen TikTok-style mode."] },
-        { titulo: 'Radar Screen', intro: "What will you find here? MyVibe users who are near you right now.", items: ["Only people active in the last 15 minutes appear.","The app quietly calculates how much your music overlaps with each nearby person's.","If there's a very high match, the card lights up red and your phone vibrates. Tap it to see which artists you share.","Tap Friendship to send them a request with a message.","Tap Battle to challenge them with a song.","Tap the radar icon to refresh manually.","The Radar range is 50 km. With VIBE PRO you can extend it up to 1000 km."] },
-        { titulo: 'Tribe Screen', intro: "What will you find here? Your music groups and your friends list with chat.", items: ["Create a public Tribe (anyone can join) or private (with a secret code).","To invite someone to your private tribe, share the code from inside the tribe — you can send it directly via chat and the recipient can join with a button.","Choose your tribe category: General, Anime & Manga, Gaming or Musicals.","Inside the tribe you share songs, comment and see what's playing in the group.","Search public tribes by name or filter by category using the buttons at the top.","In the Friends tab you have direct chat with each friend.","From Friends you can also challenge to battles directly.","If you have new messages you'll see a red dot on the friend's avatar.","In the Adivina tab you can launch an Adivina: a mysterious song fragment for your tribe members to discover the title. They listen to anywhere from 3s to 30s — the less they need, the more points they earn. Speed bonus applies.","Compete in the weekly Adivina ranking — it resets every Monday."] },
-        { titulo: 'Trending Screen', intro: "What will you find here? The songs that are blowing up on MyVibe right now.", items: ["Global mode: songs popular across the whole app.","Local mode: only songs popular near you.","Explosive = rose a lot in a short time. Rising = on a good path. New = just entered.","The History shows how songs have evolved day by day.","By posting your vibe every day you can push songs up the ranking.","Sonic Prophecy (VIBE PRO): detects songs about to explode in your area before they hit the Trending chart."] },
-        { titulo: 'ID Screen (Profile)', intro: "What will you find here? Your MyVibe identity, your achievements and your saved songs.", items: ["Customize your avatar with the exclusive VIBE PRO dark neon photorealistic gallery — over 70 designs across 12 music genres.","Your points go up by posting vibes (+5) and winning battles (+15). From Rookie to Legend.","My Sound Footprint: your musical year in review with top songs, top artists, most active month and longest streak. Share it with friends inside and outside MyVibe.","In Saved → Songs you have all the songs you bookmarked from the feed.","In Saved → Friends' Songs you find songs your friends have sent you directly.","In Saved → Friends' Footprints you can see and expand the Sound Footprints your friends have shared with you.","In Saved → Collections, organize your saved songs into your own named lists with a cover image.","Share your profile by showing your QR code, or tap Scan QR to add someone instantly.","Choose your favorite music platform in Settings — all song links will open there.","Settings also lets you turn notifications on or off and manage the songs you've hidden from your feed.","Settings has quick links to Shazam, SoundHound, Google Sound and Musixmatch, to identify a song playing around you and then post it on MyVibe.","Musical DNA (PRO): exportable vertical card — Wrapped-style — with your full musical identity for the year.","Musical Presentation Card (PRO): exportable card with your rank, top artists and musical style.","From here you also access your Tribes and active Battles."] },
-        { titulo: 'VIBE PRO', intro: "What is it? MyVibe's top tier. Unlocks extra features across every screen: radar up to 1000 km, exclusive avatars, golden frame on your profile, permanent capsules, tribe categories, Sonic Prophecy, streak shield, Musical DNA and Presentation Card.", items: ["Access it from Settings, or by tapping any locked feature — it shows blurred with a lock or the word PRO over it.","Not for sale yet. Tap \"Notify me when available\" and you'll be among the first to activate it once purchases open."] }
-      ],
       resenas_titulo: 'What users say',
       resenas: [
-        { nick: '@musiclover22', stars: '★★★★★', texto: '"I love the Radar — I\'ve met people with the same music taste who live two streets away. Incredible."' },
-        { nick: 'Andrea R.', stars: '★★★★☆', texto: '"The battles are addictive, I\'ve been challenging my friends for weeks. I\'d add more saved favorites but otherwise brilliant."' },
-        { nick: '@vinilo_dj', stars: '★★★★★', texto: '"Trending is what I use most, I discover songs that are about to blow up before anyone else."' }
+        { texto: '"I love the Radar — I\'ve met people with the same music taste who live two streets away. Incredible."' },
+        { texto: '"The battles are addictive, I\'ve been challenging my friends for weeks. I\'d add more saved favorites but otherwise brilliant."' },
+        { texto: '"Trending is what I use most, I discover songs that are about to blow up before anyone else."' }
       ],
       opinion_titulo: 'Share your thoughts',
       opinion_sub: 'Your feedback helps improve MyVibe. Takes just 1 minute.',
@@ -454,15 +568,7 @@
     });
 
     seccionTitulos[1].childNodes[seccionTitulos[1].childNodes.length - 1].textContent = ' ' + t.ayuda;
-
-    const pantallas = document.querySelectorAll('.pantalla');
-    t.pantallas.forEach((p, i) => {
-      pantallas[i].querySelector('h4').textContent = p.titulo;
-      const body = pantallas[i].querySelector('.pantalla-body');
-      body.querySelector('p').innerHTML = '<strong>' + p.intro + '</strong>';
-      const ul = body.querySelector('ul');
-      ul.innerHTML = p.items.map(li => '<li>' + li + '</li>').join('');
-    });
+    renderPantallas(currentLang);
 
     seccionTitulos[2].childNodes[seccionTitulos[2].childNodes.length - 1].textContent = ' ' + t.resenas_titulo;
     const resenas = document.querySelectorAll('.resena');
