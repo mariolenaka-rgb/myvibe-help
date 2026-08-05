@@ -295,7 +295,7 @@
       badges: [
         { label: 'Vibe diario', target: 'potente:vibe' },
         { label: 'Radar musical', target: 'pantalla:radar' },
-        { label: 'El Momento', target: 'pantalla:inicio' },
+        { label: 'El Momento', target: 'tile:momento' },
         { label: 'Señal', target: 'potente:senal' },
         { label: 'Tribus', target: 'pantalla:tribu' },
         { label: 'Trending', target: 'pantalla:trending' },
@@ -337,7 +337,7 @@
           { icon:'waveform', h:'Elige el fragmento exacto', p:'Desliza la barra de onda: el estribillo, el drop o tu parte favorita.', full:true },
           { icon:'collapse', h:'Vibes anteriores', p:'Debajo del feed de hoy, los de ayer y anteayer, colapsados.' },
           { icon:'star', accent:'gold', h:'Resumen Semanal', p:'Cada lunes: top artista, días activos y tu racha.' },
-          { icon:'bell', h:'El Momento', p:'Cada día, a una hora aleatoria entre las 10:00 y las 22:00, te preguntamos "¿qué suena ahora mismo?". Tienes 3 minutos para compartirlo antes de que se cierre.' },
+          { key:'momento', icon:'bell', h:'El Momento', p:'Cada día, a una hora aleatoria entre las 10:00 y las 22:00, te preguntamos "¿qué suena ahora mismo?". Tienes 3 minutos para compartirlo antes de que se cierre.' },
           { icon:'clock', h:'Recordatorio de las 20:00', p:'Si aún no has publicado tu vibe de la tarde/noche, te lo recordamos.' },
           { icon:'gift', accent:'gold', h:'Cápsula del Viernes', p:'Cada viernes a las 18:00 se desbloquea: tu canción más repetida de la semana y con qué amigos has coincidido sin poneros de acuerdo.' },
           { icon:'pulse', accent:'red', h:'Sintonía', p:'Si tú y un amigo publicáis la misma canción el mismo día, sin hablarlo, os avisamos a los dos con una animación especial.' }
@@ -442,7 +442,7 @@
       badges: [
         { label: 'Daily Vibe', target: 'potente:vibe' },
         { label: 'Music Radar', target: 'pantalla:radar' },
-        { label: 'The Moment', target: 'pantalla:inicio' },
+        { label: 'The Moment', target: 'tile:momento' },
         { label: 'Signal', target: 'potente:senal' },
         { label: 'Tribes', target: 'pantalla:tribu' },
         { label: 'Trending', target: 'pantalla:trending' },
@@ -484,7 +484,7 @@
           { icon:'waveform', h:'Pick the exact fragment', p:'Slide the waveform bar: the chorus, the drop, or your favourite part.', full:true },
           { icon:'collapse', h:'Earlier vibes', p:"Below today's feed, yesterday's and the day before's, collapsed." },
           { icon:'star', accent:'gold', h:'Weekly Summary', p:'Every Monday: top artist, active days and your streak.' },
-          { icon:'bell', h:'The Moment', p:'Every day, at a random time between 10am and 10pm, we ask you "what\'s playing right now?". You have 3 minutes to share it before it closes.' },
+          { key:'momento', icon:'bell', h:'The Moment', p:'Every day, at a random time between 10am and 10pm, we ask you "what\'s playing right now?". You have 3 minutes to share it before it closes.' },
           { icon:'clock', h:'8pm Reminder', p:"If you haven't posted your evening vibe yet, we'll remind you." },
           { icon:'gift', accent:'gold', h:'Friday Capsule', p:'Every Friday at 6pm it unlocks: your most-repeated song of the week and which friends matched with you without planning it.' },
           { icon:'pulse', accent:'red', h:'In Sync', p:'If you and a friend post the exact same song on the same day, without talking about it, we notify you both with a special animation.' }
@@ -603,6 +603,17 @@
     } else if (tipo === 'potente') {
       const el = document.getElementById('potente-' + key);
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else if (tipo === 'tile') {
+      const el = document.getElementById('tile-' + key);
+      if (!el) return;
+      const pantalla = el.closest('.pantalla');
+      let habiaQueAbrir = false;
+      if (pantalla && !pantalla.classList.contains('abierto')) {
+        habiaQueAbrir = true;
+        const header = pantalla.querySelector('.pantalla-header');
+        if (header) toggle(header);
+      }
+      setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'center' }), habiaQueAbrir ? 50 : 0);
     }
   }
 
@@ -630,7 +641,7 @@
       const gruposHtml = p.grupos.map(function(g) {
         const tilesHtml = g.tiles.map(function(til) {
           const color = til.accent === 'gold' ? '#FFD700' : (til.accent === 'red' ? '#FF6B6B' : '#A78BFA');
-          return '<div class="tile' + (til.full ? ' full' : '') + (til.accent ? ' accent-' + til.accent : '') + '">' +
+          return '<div class="tile' + (til.full ? ' full' : '') + (til.accent ? ' accent-' + til.accent : '') + '"' + (til.key ? ' id="tile-' + til.key + '"' : '') + '>' +
             '<div class="row1"><div class="ticon">' + I(til.icon, color, 14) + '</div><h5>' + til.h + '</h5></div>' +
             '<p>' + til.p + '</p>' +
             (til.stat ? '<span class="stat">' + til.stat + '</span>' : '') +
