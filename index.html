@@ -19,6 +19,8 @@
     .hero p { color: #AAA; font-size: 15px; line-height: 1.6; max-width: 480px; margin: 0 auto 24px; }
     .badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
     .badge { background: #1E1E2E; border: 1px solid #3D3D6B; border-radius: 20px; padding: 8px 16px; font-size: 13px; color: #A78BFA; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
+    .badge-click { cursor: pointer; }
+    .badge-click:hover { background: #3D3D6B; }
     section { padding: 40px 24px; max-width: 640px; margin: 0 auto; }
     section h3 { color: #A78BFA; font-size: 18px; font-weight: 700; margin-bottom: 20px; padding-bottom: 8px; border-bottom: 1px solid #1E1E2E; display: flex; align-items: center; gap: 8px; }
     .item { display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start; }
@@ -290,7 +292,15 @@
       btn: 'ENG',
       hero_h2: 'La app musical que <span>te conoce y te conecta</span>',
       hero_p: 'Comparte tu Vibe del día, descubre gente cerca de ti con tu mismo gusto musical, y deja que MyVibe note cuando algo no va bien.',
-      badges: ['Vibe diario','Radar musical','El Momento','Señal','Tribus','Trending','Adivina'],
+      badges: [
+        { label: 'Vibe diario', target: 'potente:vibe' },
+        { label: 'Radar musical', target: 'pantalla:radar' },
+        { label: 'El Momento', target: 'pantalla:inicio' },
+        { label: 'Señal', target: 'potente:senal' },
+        { label: 'Tribus', target: 'pantalla:tribu' },
+        { label: 'Trending', target: 'pantalla:trending' },
+        { label: 'Adivina', target: 'potente:adivina' }
+      ],
       titulo_potente: 'Lo más potente',
       titulo_que_es: '¿Qué es MyVibe?',
       titulo_ayuda: 'Ayuda por pantalla',
@@ -298,11 +308,12 @@
       titulo_pro: 'MyVibe PRO',
       titulo_faq: 'Preguntas frecuentes',
       potentes: [
-        { icon: 'note', h: 'VIBE', p: 'La canción que suena ahora en tu vida, con el trozo exacto que tú elijas. Es el corazón de MyVibe: todo lo demás nace de aquí.', tag: 'pestaña Inicio' },
-        { icon: 'senal', h: 'SEÑAL', p: 'Feed infinito de canciones con autoplay. Desliza, escucha, reacciona. Cuanto más usas, mejor te conoce.', tag: 'pestaña Señal' },
-        { icon: 'pulse', h: 'PULSO', p: 'Cada día dices cómo estás. Tu tribu lo nota cuando bajas el ritmo y te manda una canción sin decirte nada.', tag: 'al publicar tu Vibe Diario' },
-        { icon: 'noche', h: '3 DE LA MAÑANA', p: 'Entre la 1 y las 5 AM la app se transforma. Ves quién más está despierto y qué escucha, de forma anónima. Puedes mandarle una vela. Al amanecer desaparece.', tag: 'automático por la noche' },
-        { icon: 'camera', h: 'SELFIE CON CANCIÓN', p: 'Hazte una foto (cámara frontal o trasera) con la canción que quieras y envíasela directa a un amigo o a alguien de tu tribu. Si te arrepientes, la borras cuando quieras — tuya y de quien la recibió.', tag: 'pestaña ID' }
+        { key: 'vibe', icon: 'note', h: 'VIBE', p: 'La canción que suena ahora en tu vida, con el trozo exacto que tú elijas. Es el corazón de MyVibe: todo lo demás nace de aquí.', tag: 'pestaña Inicio' },
+        { key: 'senal', icon: 'senal', h: 'SEÑAL', p: 'Feed infinito de canciones con autoplay. Desliza, escucha, reacciona. Cuanto más usas, mejor te conoce.', tag: 'pestaña Señal' },
+        { key: 'pulse', icon: 'pulse', h: 'PULSO', p: 'Cada día dices cómo estás. Tu tribu lo nota cuando bajas el ritmo y te manda una canción sin decirte nada.', tag: 'al publicar tu Vibe Diario' },
+        { key: 'noche', icon: 'noche', h: '3 DE LA MAÑANA', p: 'Entre la 1 y las 5 AM la app se transforma. Ves quién más está despierto y qué escucha, de forma anónima. Puedes mandarle una vela. Al amanecer desaparece.', tag: 'automático por la noche' },
+        { key: 'camera', icon: 'camera', h: 'SELFIE CON CANCIÓN', p: 'Hazte una foto (cámara frontal o trasera) con la canción que quieras y envíasela directa a un amigo o a alguien de tu tribu. Si te arrepientes, la borras cuando quieras — tuya y de quien la recibió.', tag: 'pestaña ID' },
+        { key: 'adivina', icon: 'mic', h: 'ADIVINA LA CANCIÓN', p: 'Reta a tu tribu o a un amigo: escuchan fragmentos cada vez más largos y tienen que adivinar la canción. Cuanto antes aciertas, más puntos ganas.', tag: 'pestaña Tribu' }
       ],
       items: [
         { icon:'senal', h: 'Señal a tu manera: General, Tribu o Personal', p: 'Elige entre el feed general de siempre, solo lo que ha sonado en tu tribu, o tu propio historial filtrado por semana o mes.' },
@@ -428,7 +439,15 @@
       btn: 'ESP',
       hero_h2: 'The music app that <span>knows you and connects you</span>',
       hero_p: 'Share your Vibe of the day, discover nearby people who listen to the same music, and let MyVibe notice when something\'s off.',
-      badges: ['Daily Vibe','Music Radar','The Moment','Signal','Tribes','Trending','Guess It'],
+      badges: [
+        { label: 'Daily Vibe', target: 'potente:vibe' },
+        { label: 'Music Radar', target: 'pantalla:radar' },
+        { label: 'The Moment', target: 'pantalla:inicio' },
+        { label: 'Signal', target: 'potente:senal' },
+        { label: 'Tribes', target: 'pantalla:tribu' },
+        { label: 'Trending', target: 'pantalla:trending' },
+        { label: 'Guess It', target: 'potente:adivina' }
+      ],
       titulo_potente: 'The most powerful',
       titulo_que_es: 'What is MyVibe?',
       titulo_ayuda: 'Help by screen',
@@ -436,11 +455,12 @@
       titulo_pro: 'MyVibe PRO',
       titulo_faq: 'Frequently asked questions',
       potentes: [
-        { icon: 'note', h: 'VIBE', p: "The song playing in your life right now, with the exact fragment you pick. It's the heart of MyVibe — everything else grows from here.", tag: 'Home tab' },
-        { icon: 'senal', h: 'SIGNAL', p: 'An infinite feed of songs with autoplay. Swipe, listen, react. The more you use it, the better it knows you.', tag: 'Signal tab' },
-        { icon: 'pulse', h: 'PULSE', p: "Every day you say how you feel. Your tribe notices when you're low and sends you a song without saying a word.", tag: 'when posting your Daily Vibe' },
-        { icon: 'noche', h: '3 AM', p: 'Between 1 and 5 AM the app transforms. See who else is awake and what they\'re listening to, anonymously. You can send them a candle. It disappears at sunrise.', tag: 'automatic at night' },
-        { icon: 'camera', h: 'SELFIE WITH A SONG', p: "Take a photo (front or back camera) alongside the song you pick and send it straight to a friend or someone in your tribe. Changed your mind? Delete it whenever you want — for both of you.", tag: 'ID tab' }
+        { key: 'vibe', icon: 'note', h: 'VIBE', p: "The song playing in your life right now, with the exact fragment you pick. It's the heart of MyVibe — everything else grows from here.", tag: 'Home tab' },
+        { key: 'senal', icon: 'senal', h: 'SIGNAL', p: 'An infinite feed of songs with autoplay. Swipe, listen, react. The more you use it, the better it knows you.', tag: 'Signal tab' },
+        { key: 'pulse', icon: 'pulse', h: 'PULSE', p: "Every day you say how you feel. Your tribe notices when you're low and sends you a song without saying a word.", tag: 'when posting your Daily Vibe' },
+        { key: 'noche', icon: 'noche', h: '3 AM', p: 'Between 1 and 5 AM the app transforms. See who else is awake and what they\'re listening to, anonymously. You can send them a candle. It disappears at sunrise.', tag: 'automatic at night' },
+        { key: 'camera', icon: 'camera', h: 'SELFIE WITH A SONG', p: "Take a photo (front or back camera) alongside the song you pick and send it straight to a friend or someone in your tribe. Changed your mind? Delete it whenever you want — for both of you.", tag: 'ID tab' },
+        { key: 'adivina', icon: 'mic', h: 'GUESS THE SONG', p: 'Challenge your tribe or a friend: they listen to increasingly longer fragments and have to guess the song. The sooner you get it right, the more points you earn.', tag: 'Tribe tab' }
       ],
       items: [
         { icon:'senal', h: 'Signal your way: General, Tribe or Personal', p: 'Choose between the usual general feed, only what your tribe has posted, or your own history filtered by week or month.' },
@@ -564,12 +584,31 @@
   };
 
   function renderBadges(lang) {
-    document.getElementById('badges').innerHTML = DATA[lang].badges.map(txt => '<span class="badge">' + txt + '</span>').join('');
+    document.getElementById('badges').innerHTML = DATA[lang].badges.map(b =>
+      '<span class="badge badge-click" onclick="irA(\'' + b.target + '\')">' + b.label + '</span>'
+    ).join('');
+  }
+
+  function irA(target) {
+    const partes = target.split(':');
+    const tipo = partes[0], key = partes[1];
+    if (tipo === 'pantalla') {
+      const el = document.getElementById('pantalla-' + key);
+      if (!el) return;
+      if (!el.classList.contains('abierto')) {
+        const header = el.querySelector('.pantalla-header');
+        if (header) toggle(header);
+      }
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else if (tipo === 'potente') {
+      const el = document.getElementById('potente-' + key);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   }
 
   function renderPotentes(lang) {
     document.getElementById('potentes').innerHTML = DATA[lang].potentes.map(c =>
-      '<div class="potente-card">' +
+      '<div class="potente-card" id="potente-' + c.key + '">' +
         '<div class="p-icono">' + I(c.icon, '#A78BFA', 24) + '</div>' +
         '<h4>' + c.h + '</h4>' +
         '<p>' + c.p + '</p>' +
@@ -599,7 +638,7 @@
         }).join('');
         return (g.nombre ? '<div class="grupo-titulo">' + g.nombre + '</div>' : '') + '<div class="tiles">' + tilesHtml + '</div>';
       }).join('');
-      return '<div class="pantalla">' +
+      return '<div class="pantalla" id="pantalla-' + p.key + '">' +
         '<div class="pantalla-header" onclick="toggle(this)">' +
           '<div class="p-ico" style="background:rgba(167,139,250,.14)">' + HEADER_ICONS[p.key] + '</div>' +
           '<h4>' + p.titulo + '</h4><span class="arrow">▼</span>' +
